@@ -14,6 +14,43 @@ import './App.styl';
 
 const { Content, Footer } = Layout;
 
+// 异步按需加载component
+function asyncComponent(getComponent) {
+  return class AsyncComponent extends React.Component {
+    static Component = null;
+    state = { Component: AsyncComponent.Component };
+
+    componentWillMount() {
+      if (!this.state.Component) {
+        getComponent().then(({default: Component}) => {
+          AsyncComponent.Component = Component
+          this.setState({ Component })
+        })
+      }
+    }
+    render() {
+      const { Component } = this.state
+      if (Component) {
+        return <Component {...this.props} />
+      }
+      return null
+    }
+  }
+}
+
+// 组件引用
+function load(component) {
+  return () => import(`./views/${component}/`)
+}
+// function load(component) {
+//   return import(`./views/${component}/`)
+// }
+
+const Resolve1 = asyncComponent(load('Resolve1'));
+const Resolve2 = asyncComponent(load('Resolve2'));
+// const Resolve1 = asyncComponent(() => load('Resolve1'));
+// const Resolve2 = asyncComponent(() => load('Resolve2'));
+
 class AppLayout extends Component {
   render() {
     return (
@@ -32,6 +69,8 @@ class AppLayout extends Component {
                       <Route path={path} key={name} component={component} />  
                     ))
                   }
+                  <Route path="/resolve1" component={Resolve1} />
+                  <Route path="/resolve2" component={Resolve2} />
                   <Route component={RouteComponent1} />
                 </Switch>
               </Content>

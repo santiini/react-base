@@ -29,6 +29,16 @@ class Navbar extends Component {
         style={{lineHeight: '64px', flex: 1}}
       >
         {navMenus}
+        <Item key="resolve1">
+          <Link to="/resolve1">
+            <Icon type="mail" /> resolve1
+          </Link>
+        </Item>
+        <Item key="resolve2">
+          <Link to="/resolve2">
+            <Icon type="mail" /> resolve2
+          </Link>
+        </Item>
       </Menu>
     </Header>
     )
