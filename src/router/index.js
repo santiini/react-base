@@ -5,6 +5,9 @@ import Demo3Component from '@/views/containers/demo3/Demo3';
 import Demo4Component from '@/views/demo4/Demo4';
 import Demo5Component from '@/views/demo5/Demo5';
 
+// 按需加载
+import Demo6Component from '@/views/demo6/Demo6';
+
 import NavComponent1 from '@/views/navComponent/Nav1';
 import NavComponent2 from '@/views/navComponent/Nav2';
 import NavComponent3 from '@/views/navComponent/Nav3';
@@ -60,6 +63,12 @@ export const sideMenus = [
       },
     ]
   },
+  {
+    name: 'ensure',
+    title: '按需加载',
+    path: '/ensure',
+    component: Demo6Component,
+  }
 ];
 
 export const topMenus = [

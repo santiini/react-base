@@ -12,6 +12,15 @@ import routes from '@/router';
 import RouteComponent1 from './views/routeComponent/Demo1'
 import './App.styl';
 
+// 按需加载的测试
+import Bundle from './router/resolve';
+// import Demo6 from './views/demo6/Demo6'
+const Demo6 = (props) => (
+  <Bundle load={() => import('./views/demo6/Demo6')}>
+    {(Demo6) => <Demo6 {...props} />}
+  </Bundle>
+);
+
 const { Content, Footer } = Layout;
 
 class AppLayout extends Component {
@@ -32,6 +41,7 @@ class AppLayout extends Component {
                       <Route path={path} key={name} component={component} />  
                     ))
                   }
+                  <Route path="/resolve" component={Demo6} />
                   <Route component={RouteComponent1} />
                 </Switch>
               </Content>
