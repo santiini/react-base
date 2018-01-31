@@ -39,6 +39,21 @@ class Navbar extends Component {
             <Icon type="mail" /> resolve2
           </Link>
         </Item>
+        <Item key="resolve3">
+          <Link to="/resolve3">
+            <Icon type="mail" /> resolve3
+          </Link>
+        </Item>
+        <Item key="resolve4">
+          <Link to="/resolve4">
+            <Icon type="mail" /> resolve4
+          </Link>
+        </Item>
+        <Item key="resolve5">
+          <Link to="/resolve5">
+            <Icon type="mail" /> resolve5
+          </Link>
+        </Item>
       </Menu>
     </Header>
     )
