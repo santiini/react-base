@@ -6,7 +6,7 @@ import Demo4Component from '@/views/demo4/Demo4';
 import Demo5Component from '@/views/demo5/Demo5';
 
 // 按需加载
-import Demo6Component from '@/views/demo6/Demo6';
+// import Demo6Component from '@/views/demo6/Demo6'; // import 指令组件后，按需加载就失效了;
 
 import NavComponent1 from '@/views/navComponent/Nav1';
 import NavComponent2 from '@/views/navComponent/Nav2';
@@ -67,7 +67,7 @@ export const sideMenus = [
     name: 'ensure',
     title: '按需加载',
     path: '/ensure',
-    component: Demo6Component,
+    component: Demo5Component,
   }
 ];
 

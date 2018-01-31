@@ -12,12 +12,27 @@ import routes from '@/router';
 import RouteComponent1 from './views/routeComponent/Demo1'
 import './App.styl';
 
+/* eslint-disable import/no-webpack-loader-syntax */
 // 按需加载的测试
 import Bundle from './router/resolve';
 // import Demo6 from './views/demo6/Demo6'
-const Demo6 = (props) => (
+// import loadDemo6 from 'bundle-loader?lazy!./views/demo6/Demo6'; // bundle-loader 形式
+const Resolve1 = (props) => (
+  // <Bundle load={loadDemo6}>  // bundle-loader 形式
   <Bundle load={() => import('./views/demo6/Demo6')}>
-    {(Demo6) => <Demo6 {...props} />}
+    {(Resolve1) => <Resolve1 {...props} />}
+  </Bundle>
+);
+const Resolve2 = (props) => (
+  // <Bundle load={loadDemo6}>  // bundle-loader 形式
+  <Bundle load={() => import('./views/resolve2/Resolve2')}>
+    {(Resolve2) => <Resolve2 {...props} />}
+  </Bundle>
+);
+const Resolve3 = (props) => (
+  // <Bundle load={loadDemo6}>  // bundle-loader 形式
+  <Bundle load={() => import('./views/resolve3/Resolve3')}>
+    {(Resolve3) => <Resolve3 {...props} />}
   </Bundle>
 );
 
@@ -41,7 +56,9 @@ class AppLayout extends Component {
                       <Route path={path} key={name} component={component} />  
                     ))
                   }
-                  <Route path="/resolve" component={Demo6} />
+                  <Route path="/resolve1" component={Resolve1} />
+                  <Route path="/resolve2" component={Resolve2} />
+                  <Route path="/resolve3" component={Resolve3} />
                   <Route component={RouteComponent1} />
                 </Switch>
               </Content>
