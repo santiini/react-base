@@ -20,19 +20,19 @@ import Bundle from './router/resolve';
 const Resolve1 = (props) => (
   // <Bundle load={loadDemo6}>  // bundle-loader 形式
   <Bundle load={() => import('./views/demo6/Demo6')}>
-    {(Com) => <Com {...props} />}
+    {(Resolve1) => <Resolve1 {...props} />}
   </Bundle>
 );
 const Resolve2 = (props) => (
   // <Bundle load={loadDemo6}>  // bundle-loader 形式
   <Bundle load={() => import('./views/resolve2/Resolve2')}>
-    {(Com) => <Com {...props} />}
+    {(Resolve2) => <Resolve2 {...props} />}
   </Bundle>
 );
 const Resolve3 = (props) => (
   // <Bundle load={loadDemo6}>  // bundle-loader 形式
   <Bundle load={() => import('./views/resolve3/Resolve3')}>
-    {(Com) => <Com {...props} />}
+    {(Resolve3) => <Resolve3 {...props} />}
   </Bundle>
 );
 

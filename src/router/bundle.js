@@ -31,7 +31,7 @@ class Bundle extends Component {
 
 }
 
-const getComponent = (path, Component) => (props) => (
+const getComponent = (path) => (props) => (
   <Bundle load={() => import(path)}>
     {(Component) => <Component {...props} />}
   </Bundle>
