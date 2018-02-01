@@ -1,44 +1,36 @@
-import {Component} from 'react';
+/**
+ *  按需加载形式三： 
+ *  利用异步加载函数 和 import() 函数实现的按需加载;
+ */
+import React, { Component } from 'react';
 
-export default class Bundle extends Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-          mod: null
-      };
-  }
+// 组件引用
+// export const resolve = (path) => () => import(path);
 
-  componentWillMount() {
-      this.load(this.props)
-  }
+// 异步按需加载component
+const asyncComponent = (importComponent) => class AsyncComponent extends Component {
+  state = {
+      component: null,
+  };
 
-  componentWillReceiveProps(nextProps) {
-      if (nextProps.load !== this.props.load) {
-          this.load(nextProps)
-      }
-  }
+  async componentDidMount() {
+    console.log('按需加载')
+    if (!this.state.component) {
+      const { default: component } = await importComponent();
 
-  load(props) {
-      this.setState({
-          mod: null
-      });
-    // 1. import() 函数实现, 有问题， OK！
-    //注意这里，使用Promise对象; mod.default导出默认
-      props.load().then((mod) => {
-          this.setState({
-              mod: mod.default ? mod.default : mod
-          });
-      });
-
-    // 2. tips: bundle-loader 实现的按需加载: 可以成功;
-    //   props.load((mod) => {
-    //       this.setState({
-    //           mod: mod.default ? mod.default : mod,
-    //       })
-    //   });
+      this.setState({ component });
+    }
   }
 
   render() {
-      return this.state.mod ? this.props.children(this.state.mod) : null;
+    console.log('按需加载')
+    // 获取到组件引用时，渲染组件
+    const { component: Component } = this.state
+    if (Component) {
+      return <Component {...this.props} />
+    }
+    return null
   }
 }
+
+export default asyncComponent;

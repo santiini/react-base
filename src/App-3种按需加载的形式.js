@@ -16,13 +16,13 @@ import './App.styl';
 
 /* eslint-disable import/no-webpack-loader-syntax */
 // 按需加载的测试
-
-// 形式二: Bundle 组件和 import() 实现的按需加载，推荐;
-import Bundle from './router/resolve';
-// import Demo6 from './views/demo6/Demo6'
-
 // 形式一: bundle-loader 形式的按需加载， react-router 的方式;
 // import loadDemo6 from 'bundle-loader?lazy!./views/demo6/Demo6'; // bundle-loader 形式
+
+// 形式二: Bundle 组件和 import() 实现的按需加载，推荐;
+import {Bundle} from './router/bundle';
+// import Demo6 from './views/demo6/Demo6'
+
 const Resolve1 = (props) => (
   // <Bundle load={loadDemo6}>  // bundle-loader 形式
   <Bundle load={() => import('./views/demo6/Demo6')}>
@@ -45,7 +45,7 @@ const Resolve3 = (props) => (
 const { Content, Footer } = Layout;
 
 // 形式三： 利用异步加载函数 和 import() 函数实现的按需加载;
-// 异步按需加载component
+// 异步按需加载component 函数
 function asyncComponent(getComponent) {
   return class AsyncComponent extends React.Component {
     static Component = null;
