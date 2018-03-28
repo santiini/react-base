@@ -1,10 +1,11 @@
 .demo1 {
   background-color: #eee;
+  height: 100%;
 }
 .todo-list {
   background-color: #fff;
   width: 70%;
-  margin: 0 auto;
+  margin: 30px auto 0;
 }
 
 .todo-list li {
@@ -48,9 +49,12 @@
 }
 .input-wrapper {
   padding: 10px;
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
 }
 .input-wrapper input {
-  width: 50%;
+  width: 80%;
   padding: 15px;
   font-size: 18px;
 }

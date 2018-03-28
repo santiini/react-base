@@ -42,7 +42,7 @@ export default class Demo3 extends Component {
     // console.log(this.props)
     return (
       <div className="demo3">
-        <h4>Demo3</h4>
+        <h4>Demo3: react-redux: mapStateToProps, macActions的统一性使用</h4>
         <div className="input-container">
           <input ref={node => this.input = node} type="text" onKeyDown={this.handleAdd} />
         </div>

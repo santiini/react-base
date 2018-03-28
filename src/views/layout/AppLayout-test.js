@@ -7,7 +7,7 @@ import {
   Route,} from 'react-router-dom';
 
 import routes, { topMenus, sideMenus  } from '@/router';
-import RouteComponent1 from '../routeComponent/Demo1'
+import RouteComponent1 from '../Home'
 import './appLayout.styl';
 
 const { Header, Sider, Content, Footer } = Layout;

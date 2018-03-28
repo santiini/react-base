@@ -19,12 +19,12 @@ export default class Demo2 extends Component {
   render() {
     return (
       <div className="demo2">
-        <h4 className="demo2-title">Demo2</h4>
+        <h4 className="demo2-title">Demo2: stylus, autoprefixer 的支持</h4>
         <Com1 name={'sunxt'} age={28}>
           <div className="demo2-info">else: else 信息</div>
         </Com1>
-        <div className="">
-          <div className="transform-text">11111</div>
+        <div style={{position: 'relative'}}>
+          <span className="transform-text">11111</span>
         </div>
       </div>
     )

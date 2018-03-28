@@ -36,8 +36,8 @@ export default class Demo1 extends Component {
     const { todos, leftNum, clearCompleted } = this.props;
     return (
       <div className="demo1">
+        <h4 style={{textAlign: 'center'}}>Todolist: redux, react-redux</h4>
         <InputWrapper val={this.state.currentVal} changeHandle={this.addTodo} />
-        <h4>Demo1</h4>
         <div className="todo-list">
           <ul className="">
             {

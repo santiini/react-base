@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
+import setHeader from './hoc/setHeader'
 import logo from './logo.svg';
 import './App.styl';
 
+@setHeader('sunxt')
 class App extends Component {
   render() {
     return (
@@ -14,7 +16,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <div className="App-demo">11112222333</div>
+        <div className="App-demo">11111</div>
       </div>
     );
   }

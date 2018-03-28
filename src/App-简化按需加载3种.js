@@ -9,7 +9,7 @@ import {
 import Navbar from './views/layout/Navbar';
 import Siderbar from './views/layout/Siderbar';
 import routes from '@/router';
-import RouteComponent1 from './views/routeComponent/Demo1'
+import RouteComponent1 from './views/Home'
 import './App.styl';
 /* eslint-disable import/no-webpack-loader-syntax */
 // tips: 按需加载的3中形式:

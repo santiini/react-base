@@ -46,7 +46,7 @@ class Demo4 extends Component {
     // console.log(this.props);
     return (
       <div className="demo4">
-        <h4>demo4</h4>
+        <h4>demo4: react-redux: connect的使用进阶</h4>
         <div className="">name: { name }</div>
         <div className="">age: { age }</div>
         <div className="" style={{padding: '10px'}}>

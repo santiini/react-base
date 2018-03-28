@@ -7,10 +7,31 @@ import Demo5Component from '@/views/demo5/Demo5';
 
 // 按需加载
 // import Demo6Component from '@/views/demo6/Demo6'; // import 指令组件后，按需加载就失效了;
+import resolve from './bundle';
 
-import NavComponent1 from '@/views/navComponent/Nav1';
-import NavComponent2 from '@/views/navComponent/Nav2';
-import NavComponent3 from '@/views/navComponent/Nav3';
+const getCom = (path) => () => import(`../views/${path}`);
+
+// import NavComponent1 from '@/views/navComponent/Nav1'; // 非按需加载
+// const NavComponent1 = resolve(() => import(`${views}/navComponent/Nav1`)); // error
+// const NavComponent2 = resolve(() => import('../views/navComponent/Nav1')); // OK
+const NavComponent1 = resolve(getCom('navComponent/Nav1'));
+const NavComponent2 = resolve(getCom('navComponent/Nav2'));
+const NavComponent3 = resolve(getCom('navComponent/Nav3'));
+
+// const Resolve1 = resolve(() => import('../views/demo6/Demo6'));
+const Resolve1 = resolve(getCom('demo6/Demo6'));
+const Resolve2 = resolve(getCom('Resolve2/Resolve2'));
+const Resolve3 = resolve(getCom('resolve3/Resolve3'));
+
+// 形式三： 利用异步加载函数 和 import() 函数实现的按需加载;
+const Resolve4 = resolve(getCom('Resolve1'));
+const Resolve5 = resolve(getCom('Resolve2'));
+
+// 面试题的学习
+const Learn1 = resolve(getCom('study/Learn1'));
+const Learn2 = resolve(getCom('study/Learn2'));
+const Learn3 = resolve(getCom('study/Learn3'));
+const Learn4 = resolve(getCom('study/Learn4'));
 
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
@@ -66,8 +87,68 @@ export const sideMenus = [
   {
     name: 'ensure',
     title: '按需加载',
-    path: '/ensure',
-    component: Demo5Component,
+    children: [
+      {
+        path: '/resolve1',
+        name: 'resolve1',
+        title: 'resolve1',
+        component: Resolve1,
+      },
+      {
+        path: '/resolve2',
+        name: 'resolve2',
+        title: 'resolve2',
+        component: Resolve2,
+      },
+      {
+        path: '/resolve3',
+        name: 'resolve3',
+        title: 'resolve3',
+        component: Resolve3,
+      },
+      {
+        path: '/resolve4',
+        name: 'resolve4',
+        title: 'resolve4',
+        component: Resolve4,
+      },
+      {
+        path: '/resolve5',
+        name: 'resolve5',
+        title: 'resolve5',
+        component: Resolve5,
+      },
+    ]
+  }, 
+  {
+    name: 'study',
+    title: '面试题学习',
+    children: [
+      {
+        path: '/learn1',
+        name: 'learn1',
+        title: 'prototype',
+        component: Learn1,
+      },
+      {
+        path: '/learn2',
+        name: 'learn2',
+        title: 'es6的Class继承',
+        component: Learn2,
+      },
+      {
+        path: '/learn3',
+        name: 'learn3',
+        title: 'CSS',
+        component: Learn3,
+      },
+      {
+        path: '/learn4',
+        name: 'learn4',
+        title: 'JS',
+        component: Learn4,
+      },
+    ],
   }
 ];
 
@@ -93,5 +174,15 @@ const routes = [
   ...getPath(sideMenus),
   ...topMenus,
 ];
+
+export const getRouteData = () => {
+  let routeData = {};
+
+  routes.forEach((route) => {
+    routeData[route.name] = route;
+  });
+
+  return routeData;
+}
 
 export default routes;

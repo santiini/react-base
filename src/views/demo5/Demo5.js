@@ -61,7 +61,7 @@ class Demo5 extends Component {
     console.log(this.props.post)
     return (
       <div className="demo5">
-        <h4>demo5</h4>
+        <h4>demo5: fetch 来做网络请求</h4>
         <div className="">
           <Button>测试fetch</Button>
         </div>
