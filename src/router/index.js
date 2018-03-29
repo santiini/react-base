@@ -40,6 +40,9 @@ const ReduxDemo3 = resolve(getCom('redux/Demo3'));
 const ReduxDemo4 = resolve(getCom('redux/Demo4'));
 const ReduxDemo5 = resolve(getCom('redux/Demo5'));
 
+// react-router
+const RouteDemo1 = resolve(getCom('router/Match'));
+
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
     prev.push(cur);
@@ -126,7 +129,7 @@ export const sideMenus = [
         component: Resolve5,
       },
     ]
-  }, 
+  },
   {
     name: 'study',
     title: '面试题学习',
@@ -166,6 +169,41 @@ export const sideMenus = [
         name: 'redux1',
         title: 'redux1',
         component: ReduxDemo1,
+      },
+      {
+        path: '/redux2',
+        name: 'redux2',
+        title: 'redux2',
+        component: ReduxDemo2,
+      },
+      {
+        path: '/redux3',
+        name: 'redux3',
+        title: 'redux3',
+        component: ReduxDemo3,
+      },
+      {
+        path: '/redux4',
+        name: 'redux4',
+        title: 'redux4',
+        component: ReduxDemo4,
+      },
+      {
+        path: '/redux5',
+        name: 'redux5',
+        title: 'redux5',
+        component: ReduxDemo5,
+      },
+    ],
+  }, {
+    name: 'router',
+    title: 'react-router',
+    children: [
+      {
+        path: '/router1',
+        name: 'router1',
+        title: 'router1',
+        component: RouteDemo1,
       }
     ],
   }

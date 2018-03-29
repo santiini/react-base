@@ -6,7 +6,8 @@ import { Provider } from 'react-redux';
 import './index.css';
 // import App from './views/demo1/Demo1';
 import App from './App';
-import store from './redux/store'
+import store from './state/state';
+// import store from './redux/store'
 
 import registerServiceWorker from './registerServiceWorker';
 
@@ -30,14 +31,13 @@ renderFunc(App);
 if (module.hot) {
   const orgError = console.error;
   console.error = (...args) => {
-    if (args && args.length === 1 && typeof args[0] === 'string' 
-      && args[0].indexOf('You cannot change <Router routes>;') > -1)
-      {
-        // React route changed
-      } else {
-        // Log the error as normally
-        orgError.apply(console, args);
-      }
+    if (args && args.length === 1 && typeof args[0] === 'string'
+      && args[0].indexOf('You cannot change <Router routes>;') > -1) {
+      // React route changed
+    } else {
+      // Log the error as normally
+      orgError.apply(console, args);
+    }
   };
 
   module.hot.accept('./App', () => {

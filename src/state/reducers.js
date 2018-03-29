@@ -28,17 +28,17 @@ function todos(state = initialState.todos, action) {
     case types.SHOWTODOS:
       return state;
     case types.ADDTODO:
-      return [ action.todo, ...state ];
+      return [action.todo, ...state];
     case types.DELETETODO:
       return state.filter((todo) => todo.id !== action.id);
     case types.UPDATETODO:
-      return state.map((todo) => todo.id === action.id ? Object.assign({}, todo, action.todo) : todo);
-      // return state.map((todo) => {
-      //   return todo.id === action.id ? Object.assign({}, todo, action.todo) : todo;
-      // });
+      return state.map((todo) => todo.id === action.id ? Object.assign({}, todo, { text: action.todo }) : todo);
+    // return state.map((todo) => {
+    //   return todo.id === action.id ? Object.assign({}, todo, action.todo) : todo;
+    // });
     case types.FINDTODO:
       const result = state.find((todo) => todo.id === action.id)
-      return  result ? result : {};
+      return result ? result : {};
     default:
       return state;
   }
@@ -49,18 +49,23 @@ function users(state = initialState.user, action) {
     case types.SHOWUSERS:
       return state;
     case types.ADDUSER:
-      return [ action.user, ...state ];
+      return [action.user, ...state];
     case types.DELETEUSER:
       return state.filter((user) => user.id !== action.id);
     case types.UPDATEUSER:
       return state.map((user) => user.id === action.id ? Object.assign({}, user, action.user) : user);
-      // return state.map((user) => {
-      //   return user.id === action.id ? Object.assign({}, user, action.user) : user;
-      // });
+    // return state.map((user) => {
+    //   return user.id === action.id ? Object.assign({}, user, action.user) : user;
+    // });
     case types.FINDUSER:
       const result = state.find((user) => user.id === action.id)
-      return  result ? result : {};
+      return result ? result : {};
     default:
       return state;
   }
 }
+
+export default combineReducers({
+  todos,
+  users,
+});

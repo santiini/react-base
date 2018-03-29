@@ -1,13 +1,42 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../state/actions';
 
 class Demo3 extends Component {
+  changeTodo = (id) => {
+    console.log(this.props);
+    this.props.updateTodo(id, 'change3333');
+  }
+
   render() {
+    const list = this.props.list.map((todo) => (
+      <div key={todo.id}>
+        <div className="">{todo.text}</div>
+        <button onClick={() => this.changeTodo(todo.id)}>改变</button>
+      </div>
+    ));
     return (
       <div>
         <h4>redux实例3</h4>
+        {list}
       </div>
     );
   }
 }
 
-export default Demo3;
+const mapStateToProps = (state) => ({
+  list: state.todos,
+});
+
+// 对象形式的mapDispatch: 
+// const mapDispatchToProps = {
+//   ...actions,
+// };
+
+const mapDispatchToProps = {
+  addTodo: actions.addTodo,
+  findOne: actions.findTodoById,
+  updateTodo: actions.updateTodo,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Demo3);

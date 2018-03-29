@@ -1,6 +1,6 @@
 import { getDetail } from '@/api/cnode.js';
 import * as types from './action-types';
- 
+
 // action 函数
 // users: function
 export function getAllTodos() {
@@ -10,7 +10,7 @@ export function getAllTodos() {
 }
 export function addTodo(text) {
   // 产生唯一uuid
-  const id = Math.random().toString(36).substring(3, 8); 
+  const id = Math.random().toString(36).substring(3, 8);
   return {
     type: types.ADDTODO,
     text,
@@ -45,7 +45,7 @@ export function getAllUsers() {
 }
 export function addUser(text) {
   // 产生唯一uuid
-  const id = Math.random().toString(36).substring(3, 8); 
+  const id = Math.random().toString(36).substring(3, 8);
   return {
     type: types.ADDUSER,
     text,
@@ -78,7 +78,9 @@ export const getPostDetail = (id) => async (dispatch, getState) => {
   try {
     const state = getState();
     const result = await getDetail(id);
-    await dispatch(saveReducer(result.data))
+    // await dispatch(saveReducer(result.data))
+    console.log(state);
+    console.log(result);
   } catch (err) {
     console.log(err);
   }
