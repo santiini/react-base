@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'antd';
 import * as actions from '../../state/actions';
 
 class Demo1 extends Component {
@@ -11,7 +12,7 @@ class Demo1 extends Component {
     const list = this.props.list.map((todo) => (
       <div key={todo.id}>
         <div className="">{todo.text}</div>
-        <button onClick={() => this.changeTodo(todo.id)}>改变</button>
+        <Button onClick={() => this.changeTodo(todo.id)}>改变</Button>
       </div>
     ));
     // this.props.location: 获取 router 中的参数;

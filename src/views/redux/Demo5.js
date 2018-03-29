@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'antd';
 import * as actions from '../../state/actions';
 
 @connect((state) => ({
@@ -26,7 +27,7 @@ class Demo5 extends Component {
     const list = this.props.list.map((todo) => (
       <div key={todo.id}>
         <div className="">{todo.text}</div>
-        <button onClick={() => this.changeTodo(todo.id)}>改变</button>
+        <Button onClick={() => this.changeTodo(todo.id)}>改变</Button>
       </div>
     ));
     return (
@@ -34,7 +35,7 @@ class Demo5 extends Component {
         <h4>redux实例5</h4>
         {list}
         <div className="">
-          <button onClick={this.toLink}>toRedux1</button>
+          <Button onClick={this.toLink}>toRedux1</Button>
         </div>
       </div>
     );
