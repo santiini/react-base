@@ -7,10 +7,11 @@ export default class Learn4 extends Component {
   test1 = () => {
     let a = 1
     if (true) {
-        console.log(a) // undefined
+        // console.log(a) // undefined: 'a' was used before it was defined
         let a = 2
         let b = 3
         console.log(b) // 3
+        console.log(a) // 3
     }
     console.log(a) // 1
     // console.log(b) // b is not defined

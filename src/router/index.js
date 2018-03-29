@@ -33,6 +33,13 @@ const Learn2 = resolve(getCom('study/Learn2'));
 const Learn3 = resolve(getCom('study/Learn3'));
 const Learn4 = resolve(getCom('study/Learn4'));
 
+// react-redux 测试
+const ReduxDemo1 = resolve(getCom('redux/Demo1'));
+const ReduxDemo2 = resolve(getCom('redux/Demo2'));
+const ReduxDemo3 = resolve(getCom('redux/Demo3'));
+const ReduxDemo4 = resolve(getCom('redux/Demo4'));
+const ReduxDemo5 = resolve(getCom('redux/Demo5'));
+
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
     prev.push(cur);
@@ -148,6 +155,18 @@ export const sideMenus = [
         title: 'JS',
         component: Learn4,
       },
+    ],
+  },
+  {
+    name: 'redux',
+    title: 'react-redux',
+    children: [
+      {
+        path: '/redux1',
+        name: 'redux1',
+        title: 'redux1',
+        component: ReduxDemo1,
+      }
     ],
   }
 ];
