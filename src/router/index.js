@@ -42,6 +42,12 @@ const ReduxDemo5 = resolve(getCom('redux/Demo5'));
 
 // react-router
 const RouteDemo1 = resolve(getCom('router/Match'));
+const RouteDemo2 = resolve(getCom('router/History'));
+const RouteDemo3 = resolve(getCom('router/Keep'));
+
+// hoc
+const HocDemo1 = resolve(getCom('Hoc/Demo1'));
+const HocDemo2 = resolve(getCom('Hoc/Demo2'));
 
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
@@ -204,9 +210,29 @@ export const sideMenus = [
         name: 'router1',
         title: 'router1',
         component: RouteDemo1,
-      }
+      },
+      {
+        path: '/router2',
+        name: 'router2',
+        title: 'router2',
+        component: RouteDemo2,
+      },
+      {
+        path: '/router3',
+        name: 'router3',
+        title: 'router3',
+        component: RouteDemo3,
+      },
     ],
-  }
+  },
+  {
+    name: 'hoc',
+    title: 'hoc',
+    children: [
+      { path: '/hoc1', name: 'hoc1', title: 'hoc1', component: HocDemo1 },
+      { path: '/hoc2', name: 'hoc2', title: 'hoc2', component: HocDemo2 },
+    ],
+  },
 ];
 
 export const topMenus = [
