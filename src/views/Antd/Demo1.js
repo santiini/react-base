@@ -30,20 +30,20 @@ class Demo1 extends Component {
 
   render() {
     const { getFieldProps } = this.props.form;
-    const marks = {
-      0: '周一', 10: '周二', 20: '周三', 30: '周四', 40: '周五', 50: '周六', 60: '周日',
-    };
-    const marks1 = {
-      0: '0°C',
-      26: '26°C',
-      37: '37°C',
-      100: {
-        style: {
-          color: 'red',
-        },
-        label: <strong>100°C</strong>,
-      },
-    };
+    // const marks = {
+    //   0: '周一', 10: '周二', 20: '周三', 30: '周四', 40: '周五', 50: '周六', 60: '周日',
+    // };
+    // const marks1 = {
+    //   0: '0°C',
+    //   26: '26°C',
+    //   37: '37°C',
+    //   100: {
+    //     style: {
+    //       color: 'red',
+    //     },
+    //     label: <strong>100°C</strong>,
+    //   },
+    // };
     const cascaderData = [
       {
         value: 'beijing',

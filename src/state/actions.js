@@ -23,7 +23,8 @@ export function deleteTodo(id) {
     id,
   };
 }
-export function updateTodo(id, todo) {
+export function updateTodo({ id, todo }) {
+  // export function updateTodo(id, todo) {
   return {
     type: types.UPDATETODO,
     id,

@@ -52,6 +52,8 @@ const HocDemo2 = resolve(getCom('Hoc/Demo2'));
 // antd
 const AntdDemo1 = resolve(getCom('Antd/Demo1'));
 const AntdDemo2 = resolve(getCom('Antd/Demo2'));
+const AntdDemo3 = resolve(getCom('Antd/Demo3'));
+const AntdDemo4 = resolve(getCom('Antd/Demo4'));
 
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
@@ -243,6 +245,8 @@ export const sideMenus = [
     children: [
       { path: '/antd1', name: 'antd1', title: 'hoc1', component: AntdDemo1 },
       { path: '/antd2', name: 'antd2', title: 'hoc2', component: AntdDemo2 },
+      { path: '/antd3', name: 'antd3', title: 'hoc3', component: AntdDemo3 },
+      { path: '/antd4', name: 'antd4', title: 'hoc4', component: AntdDemo4 },
     ],
   },
 ];

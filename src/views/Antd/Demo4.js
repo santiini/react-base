@@ -3,6 +3,7 @@ import {
   Form,
   Input,
   Button,
+  DatePicker,
 } from 'antd';
 
 const FormItem = Form.Item;
@@ -46,6 +47,15 @@ class FormValidateDemo extends Component {
     } else {
       callback();
     }
+  }
+
+  checkDate = (rule, value, callback) => {
+    console.log(value)
+    // console.log(value.getTime());
+    // if (value && value.getTime() > Date.now()) {
+    //   callback([new Error('不能大于今天')]);
+    // }
+    callback();
   }
 
   submitForm = (e) => {
@@ -114,7 +124,13 @@ class FormValidateDemo extends Component {
       rules: [
         { required: true, message: '简单的描述下吧', }
       ],
-    })
+    });
+    const dateProps = getFieldProps('datepicker', {
+      rules: [
+        { required: true, type: 'date', message: '选择日期' },
+        // { validator: this.checkDate }
+      ]
+    });
     return (
       <div>
         <Form horizontal="true">
@@ -153,6 +169,13 @@ class FormValidateDemo extends Component {
             hasFeedback
           >
             <TextArea placeholder="输入备注" {...textProps} rows="5" />
+          </FormItem>
+          <FormItem
+            {...formItemLayout}
+            label="日期"
+            hasFeedback
+          >
+            <DatePicker placeholder="日期选择" {...dateProps} />
           </FormItem>
           <FormItem
             wrapperCol={{ span: 12, offset: 6 }}
