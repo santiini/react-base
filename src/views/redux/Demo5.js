@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'antd';
-import * as actions from '../../state/actions';
+// import * as actions from '../../state/actions';
 import * as types from '../../state/action-types';
 
 @connect((state) => ({

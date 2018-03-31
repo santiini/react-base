@@ -6,12 +6,15 @@ import { Provider } from 'react-redux';
 import './index.css';
 // import App from './views/demo1/Demo1';
 import App from './App';
-import store from './state/state';
+// import store from './state/state';
 // import store from './redux/store'
+import configStore from './reducers/configStore';
 
 import registerServiceWorker from './registerServiceWorker';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
+
+const store = configStore();
 
 const renderFunc = Component => {
   // 增加react-hot-loader保持状态刷新操作，如果不需要可去掉并把下面注释的打开
