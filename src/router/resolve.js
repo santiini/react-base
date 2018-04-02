@@ -14,7 +14,7 @@ const asyncComponent = (importComponent) => class AsyncComponent extends Compone
   };
 
   async componentDidMount() {
-    console.log('按需加载')
+    console.log('按需加载形式3')
     if (!this.state.component) {
       const { default: component } = await importComponent();
 
@@ -23,8 +23,8 @@ const asyncComponent = (importComponent) => class AsyncComponent extends Compone
   }
 
   render() {
-    console.log('按需加载')
     // 获取到组件引用时，渲染组件
+    // const Component = this.state.component;
     const { component: Component } = this.state
     if (Component) {
       return <Component {...this.props} />
