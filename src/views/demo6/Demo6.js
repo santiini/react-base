@@ -10,8 +10,8 @@ class Demo6 extends Component {
   render() {
     return (
       <div>
-        <h4>Resolve1 按需加载</h4>
-        <Button onClick={this.showDialog}>加载resolve1</Button>
+        <h4>Resolve66 按需加载</h4>
+        <Button onClick={this.showDialog}>加载resolve666</Button>
       </div>
     )
   }

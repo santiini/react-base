@@ -12,6 +12,12 @@ import resolve from './resolve';
 
 const getCom = (path) => () => import(`../views/${path}`);
 
+const asyncCom = (component) => {
+  const getCom = path => () => import(`../views/${path}`);
+  return resolve(getCom(component));
+};
+const asyncComponent = (path) => resolve(getCom(path));
+
 // import NavComponent1 from '@/views/navComponent/Nav1'; // 非按需加载
 // const NavComponent1 = resolve(() => import(`${views}/navComponent/Nav1`)); // error
 // const NavComponent2 = resolve(() => import('../views/navComponent/Nav1')); // OK
@@ -20,13 +26,18 @@ const NavComponent2 = resolve(getCom('navComponent/Nav2'));
 const NavComponent3 = resolve(getCom('navComponent/Nav3'));
 
 // const Resolve1 = resolve(() => import('../views/demo6/Demo6'));
-const Resolve1 = resolve(getCom('demo6/Demo6'));
-const Resolve2 = resolve(getCom('Resolve2/Resolve2'));
-const Resolve3 = resolve(getCom('resolve3/Resolve3'));
+// const Resolve1 = resolve(getCom('demo6/Demo6'));
+// const Resolve2 = resolve(getCom('Resolve2/Resolve2'));
+// const Resolve3 = resolve(getCom('resolve3/Resolve3'));
+const Resolve1 = asyncCom('demo6/Demo6');
+const Resolve2 = asyncCom('Resolve2/Resolve2');
+const Resolve3 = asyncCom('resolve3/Resolve3');
 
 // 形式三： 利用异步加载函数 和 import() 函数实现的按需加载;
-const Resolve4 = resolve(getCom('Resolve1'));
-const Resolve5 = resolve(getCom('Resolve2'));
+// const Resolve4 = resolve(getCom('Resolve1'));
+// const Resolve5 = resolve(getCom('Resolve2'));
+const  Resolve4 = asyncComponent('Resolve1');
+const  Resolve5 = asyncComponent('Resolve2');
 
 // 面试题的学习
 const Learn1 = resolve(getCom('study/Learn1'));

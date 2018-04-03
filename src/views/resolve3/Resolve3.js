@@ -10,8 +10,8 @@ class Resolve3 extends Component {
   render() {
     return (
       <div>
-        <h4>Resolve3 按需加载</h4>
-        <Button onClick={this.showDialog}>加载resolve3</Button>
+        <h4>Resolve333 按需加载</h4>
+        <Button onClick={this.showDialog}>加载resolve333</Button>
       </div>
     )
   }
