@@ -1,14 +1,12 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import { Menu } from 'antd';
 
+import Content1 from './Match/Demo1';
+import Content2 from './Match/Demo2';
+import Content3 from './Match/Demo3';
+
 const { Item } = Menu;
-const Content = ({ match }) => (
-  <div>
-    <h5>content: 内容部分</h5>
-    <div className="">type: {match.params.type}</div>
-  </div>
-);
 
 // 父组件中
 const Hot = ({ match }) => (
@@ -27,9 +25,18 @@ const Hot = ({ match }) => (
       <Item key="goods">
         <Link to={`${match.url}/goods`}>goods</Link>
       </Item>
+      <Item key="demo1">
+        <Link to={`${match.url}/demo1`}>demo11</Link>
+      </Item>
+      <Item key="demo2">
+        <Link to={`${match.url}/demo2`}>demo22</Link>
+      </Item>
     </Menu>
-
-    <Route path={`${match.url}/:type`} component={Content} />
+    <Switch>
+      <Route path={`${match.url}/demo1`} component={Content1} />
+      <Route path={`${match.url}/demo2`} component={Content2} />
+      <Route path={`${match.url}/:type`} component={Content3} />
+    </Switch>
   </div>
 );
 

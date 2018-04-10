@@ -31,22 +31,22 @@ const renderFunc = Component => {
 renderFunc(App);
 
 // 热刷新
-if (module.hot) {
-  const orgError = console.error;
-  console.error = (...args) => {
-    if (args && args.length === 1 && typeof args[0] === 'string'
-      && args[0].indexOf('You cannot change <Router routes>;') > -1) {
-      // React route changed
-    } else {
-      // Log the error as normally
-      orgError.apply(console, args);
-    }
-  };
+// if (module.hot) {
+//   const orgError = console.error;
+//   console.error = (...args) => {
+//     if (args && args.length === 1 && typeof args[0] === 'string'
+//       && args[0].indexOf('You cannot change <Router routes>;') > -1) {
+//       // React route changed
+//     } else {
+//       // Log the error as normally
+//       orgError.apply(console, args);
+//     }
+//   };
 
-  module.hot.accept('./App', () => {
-    renderFunc(App);
-  });
-}
+//   module.hot.accept('./App', () => {
+//     renderFunc(App);
+//   });
+// }
 
 
 // 2. 刷新方式2 - 简单的刷新
