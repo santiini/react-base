@@ -25,9 +25,9 @@ const Content = ({ match }) => (
       <Route path={`${match.url}/sub1`} component={SubCom1} />
       <Route path={`${match.url}/sub2`} component={SubCom2} />
       {/* 1. 不采用 match.url, 可以在 match.params 中获取所有参数信息 */}
-      {/* <Route path="/router1/:type/:id" component={SubCom3} /> */}
+      <Route path="/router1/:type/:id" component={SubCom3} />
       {/* 2. 采用 match.url, 则 match.ul 固定为本页面，所以获取不到 :type 参数*/}
-      <Route path={`${match.url}/:id`} component={SubCom3} />
+      {/* <Route path={`${match.url}/:id`} component={SubCom3} /> */}
     </Switch>
   </div>
 );

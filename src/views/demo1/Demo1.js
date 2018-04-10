@@ -10,6 +10,12 @@ export default class Demo1 extends Component {
     currentVal: '',
   };
 
+  componentDidMount() {
+    // 获取从其他页面获取的参数:
+    // console.log(this.props.location.state);
+    // 从 redux 中获取 state
+    // console.log(this.props);
+  }
   addTodo = (val) => {
     // const length = this.props.todos.length;
     this.props.handleAdd(val);
@@ -24,12 +30,6 @@ export default class Demo1 extends Component {
     this.props.toggleTodo(id);
   }
 
-  componentDidMount() {
-    // 获取从其他页面获取的参数:
-    // console.log(this.props.location.state);
-    // 从 redux 中获取 state
-    // console.log(this.props);
-  }
 
   render() {
     // const todos = this.props.todos.map((todo) => <li>{todo}</li>)

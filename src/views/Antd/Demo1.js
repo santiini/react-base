@@ -118,7 +118,8 @@ class Demo1 extends Component {
             step={1}
             min={0}
             max={6}
-            {...getFieldProps('slider')} />
+            {...getFieldProps('slider')}
+          />
           {/*<Slider marks={['A', 'B', 'C', 'D', 'E', 'F', 'G']} step={1} min={0} max={6} {...getFieldProps('slider')} /> */}
           {/* <Slider marks={marks} min={0} max={60} step={null} {...getFieldProps('slider')} /> */}
         </Item>
@@ -190,7 +191,7 @@ class Demo1 extends Component {
           </Col>
         </Item>
         <Item label="时间选择" labelCol={{ span: 6 }} wrapperCol={{ span: 16 }}>
-          <TimePicker placeholder="定时"  {...getFieldProps('orderTime')} />
+          <TimePicker placeholder="定时" {...getFieldProps('orderTime')} />
         </Item>
         <Item label="单选按钮" labelCol={{ span: 6 }} wrapperCol={{ span: 16 }}>
           <RadioGroup {...getFieldProps('radioGroup')}>

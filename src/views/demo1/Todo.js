@@ -12,7 +12,7 @@ const Todo = ({item, handleDelete, changeStatus}) => {
     <li>
       <div className="todo-item">
         <div className="todo-status" onClick={() => changeStatus(id)}>
-          <img height="28" src={completed ? checkedImg : unCheckedImg} alt="checked"/>
+          <img height="28" src={completed ? checkedImg : unCheckedImg} alt="checked" />
         </div>
         <div className="todo-content">{text}</div>
         {/* <div className="todo-delete" onClick={() => handleDelete(text)}>删除</div> */}

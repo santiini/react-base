@@ -11,7 +11,7 @@ class Breadlist extends Component {
   // 渲染子节点
   itemRender = (route, params, routes, paths) => {
     const { linkElement = 'a' } = this.props;
-    const last = routes.indexOf(route) ===  routes.length - 1;
+    const last = routes.indexOf(route) === routes.length - 1;
 
     return (
       last || !route.component

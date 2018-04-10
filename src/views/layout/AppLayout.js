@@ -7,7 +7,7 @@ import {
   Route,
 } from 'react-router-dom';
 
-import routes, { topMenus, sideMenus  } from '@/router';
+import routes, { topMenus, sideMenus } from '@/router';
 import RouteComponent1 from '../Home'
 import './appLayout.styl';
 
@@ -55,7 +55,7 @@ class AppLayout extends Component {
         <Layout className="layout-body">
           <Header style={{backgroundColor: '#fff', padding: 0, display: 'flex'}}>
             <div className="nav-logo">
-              <div className="nav-logo-content"></div>
+              <div className="nav-logo-content" />
             </div>
             <Menu
               defaultSelectedKeys={['nav1']}

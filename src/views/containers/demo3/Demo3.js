@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 // bindActionCreators
 // 绑定 以 { key: value } 形式绑定 action 函数到props, 并以 dispatch(action.type, args) 形式调用;
-const mapDispatchToProps =  (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   actions: bindActionCreators({
     addTask, editTask, deleteTask,
   }, dispatch),
