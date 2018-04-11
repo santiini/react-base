@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
 import {
-  BrowserRouter as Router,
+  Router,
   Switch,
   Route,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import createHistory from 'history/createBrowserHistory'
+import { ConnectedRouter } from 'react-router-redux';
 
 import Navbar from './views/layout/Navbar';
 import Siderbar from './views/layout/Siderbar';
@@ -16,6 +18,7 @@ import './App.styl';
 /* eslint-disable import/no-webpack-loader-syntax */
 
 const { Content, Footer } = Layout;
+export const history = createHistory();
 
 class AppLayout extends Component {
   static childContextTypes = {
@@ -33,7 +36,7 @@ class AppLayout extends Component {
   render() {
     return (
       // 默认的 Layout 没有 height 100% 的 css, 这里根元素需要设置: #app, 第一层 Layout, height: 100%
-      <Router>
+      <Router history={history}>
         <Layout className="layout-body">
           <Navbar />
           <Layout>

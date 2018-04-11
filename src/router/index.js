@@ -67,6 +67,10 @@ const AntdDemo2 = resolve(getCom('Antd/Demo2'));
 const AntdDemo3 = resolve(getCom('Antd/Demo3'));
 const AntdDemo4 = resolve(getCom('Antd/Demo4'));
 
+// react-router-redux
+const RouterRedux1 = resolve(getCom('routerRedux/Demo1'));
+const RouterRedux2 = resolve(getCom('routerRedux/Demo2'));
+
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
     prev.push(cur);
@@ -261,6 +265,14 @@ export const sideMenus = [
       { path: '/antd4', name: 'antd4', title: 'hoc4', component: AntdDemo4 },
     ],
   },
+  {
+    name: 'react-router-redux',
+    title: 'react-router-redux',
+    children: [
+      { path: '/routerRedux1', name: 'routerRedux1', title: 'routerRedux1', component: RouterRedux1},
+      { path: '/routerRedux2', name: 'routerRedux2', title: 'routerRedux2', component: RouterRedux2},
+    ],
+  }
 ];
 
 export const topMenus = [

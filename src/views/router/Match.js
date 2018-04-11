@@ -3,10 +3,24 @@ import { Route, Link } from 'react-router-dom';
 import { Menu } from 'antd';
 
 const { Item } = Menu;
+const SubContent = (props) => {
+  console.log(props);
+  const { match} = props;
+  return (
+    <div>
+      <h5>SubContent: 子组件的内容</h5>
+      <div className="">id: {match.params.id}</div>
+    </div>
+  )
+};
 const Content = ({ match }) => (
   <div>
     <h5>content: 内容部分</h5>
     <div className="">type: {match.params.type}</div>
+    <div className="">
+      <Link to={`${match.url}/info/3`}>子组件</Link>
+    </div>
+    <Route path={`${match.url}/info/:id`} component={SubContent} />
   </div>
 );
 

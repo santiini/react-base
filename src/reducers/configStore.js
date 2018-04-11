@@ -1,12 +1,15 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import { routerMiddleware } from 'react-router-redux'
 
 import reducers from './rootReducers';
 import { initialState as todos } from './todoReducers';
 import { initialState as users } from './userReducers';
 import { router as routing } from './rootReducers';
+import { history } from '../App';
 
-const middlewares = [thunk];
+const middleware = routerMiddleware(history);
+const middlewares = [thunk, middleware];
 let devToolsExtension = f => f;
 let state = {
   // name: 'santiiny',
