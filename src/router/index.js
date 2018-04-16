@@ -36,8 +36,8 @@ const Resolve3 = asyncCom('resolve3/Resolve3');
 // 形式三： 利用异步加载函数 和 import() 函数实现的按需加载;
 // const Resolve4 = resolve(getCom('Resolve1'));
 // const Resolve5 = resolve(getCom('Resolve2'));
-const  Resolve4 = asyncComponent('Resolve1');
-const  Resolve5 = asyncComponent('Resolve2');
+const Resolve4 = asyncComponent('Resolve1');
+const Resolve5 = asyncComponent('Resolve2');
 
 // 面试题的学习
 const Learn1 = resolve(getCom('study/Learn1'));
@@ -66,6 +66,17 @@ const AntdDemo1 = resolve(getCom('Antd/Demo1'));
 const AntdDemo2 = resolve(getCom('Antd/Demo2'));
 const AntdDemo3 = resolve(getCom('Antd/Demo3'));
 const AntdDemo4 = resolve(getCom('Antd/Demo4'));
+const AntdDemo5 = resolve(getCom('Antd/Demo5'));
+
+// kol
+const KolCom = resolve(getCom('kol/index'));
+const KolCom2 = resolve(getCom('kol/Demo2'));
+const KolCom3 = resolve(getCom('kol/Demo3'));
+
+// test
+// const TestCom = resolve(getCom('test/Demo1'));
+
+const LookComponent = asyncCom('Look/ReceiveProps');
 
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
@@ -259,8 +270,32 @@ export const sideMenus = [
       { path: '/antd2', name: 'antd2', title: 'hoc2', component: AntdDemo2 },
       { path: '/antd3', name: 'antd3', title: 'hoc3', component: AntdDemo3 },
       { path: '/antd4', name: 'antd4', title: 'hoc4', component: AntdDemo4 },
+      { path: '/antd5', name: 'antd5', title: 'react学习', component: AntdDemo5 },
     ],
   },
+  {
+    name: 'kol',
+    title: 'social',
+    children: [
+      { path: '/kol/app', name: 'app', title: 'app', component: KolCom },
+      { path: '/kol/app2', name: 'app2', title: 'app2', component: KolCom2 },
+      { path: '/kol/app3', name: 'app3', title: 'app3', component: KolCom3 },
+    ]
+  }, 
+  // {
+  //   name: 'test',
+  //   title: 'test',
+  //   children: [
+  //     { path: '/test1', name: 'test1', title: 'test1', component: TestCom }
+  //   ],
+  // },
+  {
+    name: 'look',
+    title: '生命周期',
+    children: [
+      { path: '/react/receiveProps', name: 'reveiveProps', title: 'reveiveProps', component: LookComponent },
+    ],
+  }
 ];
 
 export const topMenus = [
