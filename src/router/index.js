@@ -75,8 +75,10 @@ const KolCom3 = resolve(getCom('kol/Demo3'));
 
 // test
 // const TestCom = resolve(getCom('test/Demo1'));
-
 const LookComponent = asyncCom('Look/ReceiveProps');
+
+// lodash
+const LodashMap = asyncCom('Lodash/Map');
 
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
@@ -294,6 +296,13 @@ export const sideMenus = [
     title: '生命周期',
     children: [
       { path: '/react/receiveProps', name: 'reveiveProps', title: 'reveiveProps', component: LookComponent },
+    ],
+  },
+  {
+    name: 'lodash',
+    title: 'lodash',
+    children: [
+      { path: '/lodash/map', name: 'map', title: 'lodash-map', component: LodashMap }
     ],
   }
 ];
