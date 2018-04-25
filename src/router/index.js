@@ -80,6 +80,9 @@ const LookComponent = asyncCom('Look/ReceiveProps');
 // lodash
 const LodashMap = asyncCom('Lodash/Map');
 
+// 功能
+const CopyComponent = asyncCom('try/Copy');
+
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
     prev.push(cur);
@@ -304,6 +307,13 @@ export const sideMenus = [
     children: [
       { path: '/lodash/map', name: 'map', title: 'lodash-map', component: LodashMap }
     ],
+  },
+  {
+    name: 'try',
+    title: '功能测试',
+    children: [
+      { path: '/try/copuy', name: 'copy', title: '复制', component: CopyComponent },
+    ]
   }
 ];
 
