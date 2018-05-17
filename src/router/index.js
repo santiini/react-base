@@ -89,6 +89,10 @@ const CopyComponent = asyncCom('try/Copy');
 // 第三方库
 const LoadableCom = asyncCom('ReactLibrary/ReactLoadable'); // react-loadable 按需加载
 
+// react-router-redux
+const RouterRedux1 = resolve(getCom('routerRedux/Demo1'));
+const RouterRedux2 = resolve(getCom('routerRedux/Demo2'));
+
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
     prev.push(cur);
@@ -334,6 +338,14 @@ export const sideMenus = [
     children: [
       { path: '/lib/loadable', name: 'loadable', title: 'react-loadable', component: LoadableCom },
     ]
+  },
+  {
+    name: 'react-router-redux',
+    title: 'react-router-redux',
+    children: [
+      { path: '/routerRedux1', name: 'routerRedux1', title: 'routerRedux1', component: RouterRedux1 },
+      { path: '/routerRedux2', name: 'routerRedux2', title: 'routerRedux2', component: RouterRedux2 },
+    ],
   },
 ];
 
