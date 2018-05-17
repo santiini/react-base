@@ -1,4 +1,8 @@
 /* 项目路由 */
+// 使用 react-loadable 库进行按需加
+import Loadable from 'react-loadable';
+import Loading from '@/components/Loading';
+
 import Demo1Component from '@/views/containers/demo1/Demo1';
 import Demo2Component from '@/views/demo2/Demo2';
 import Demo3Component from '@/views/containers/demo3/Demo3';
@@ -90,8 +94,22 @@ const CopyComponent = asyncCom('try/Copy');
 const LoadableCom = asyncCom('ReactLibrary/ReactLoadable'); // react-loadable 按需加载
 
 // react-router-redux
-const RouterRedux1 = resolve(getCom('routerRedux/Demo1'));
+// const RouterRedux1 = resolve(getCom('routerRedux/Demo1'));
 const RouterRedux2 = resolve(getCom('routerRedux/Demo2'));
+
+const getComPath = (filePath) => `../views/${filePath}`;
+const RouterRedux1 = Loadable({
+  loader: () => import(getComPath('routerRedux/Demo1')), // 加载组件函数
+  loading: Loading, // Loading 组件
+  delay: 10000, // 延迟加载的时间
+  timeout: 20000, // 超时设置
+});
+// const RouterRedux2 = Loadable({
+//   loader: import(getCom('routerRedux/Demo2')),
+//   loading: Loading,
+//   delay: 5000,
+//   timeout: 10000,
+// });
 
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
