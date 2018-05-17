@@ -61,6 +61,9 @@ const RouteDemo3 = resolve(getCom('router/Keep'));
 const HocDemo1 = resolve(getCom('Hoc/Demo1'));
 const HocDemo2 = resolve(getCom('Hoc/Demo2'));
 
+// props 参数传递
+const PropsComponent = resolve(getCom('passProps/props'));
+
 // antd
 const AntdDemo1 = resolve(getCom('Antd/Demo1'));
 const AntdDemo2 = resolve(getCom('Antd/Demo2'));
@@ -82,6 +85,9 @@ const LodashMap = asyncCom('Lodash/Map');
 
 // 功能
 const CopyComponent = asyncCom('try/Copy');
+
+// 第三方库
+const LoadableCom = asyncCom('ReactLibrary/ReactLoadable'); // react-loadable 按需加载
 
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
@@ -286,7 +292,7 @@ export const sideMenus = [
       { path: '/kol/app2', name: 'app2', title: 'app2', component: KolCom2 },
       { path: '/kol/app3', name: 'app3', title: 'app3', component: KolCom3 },
     ]
-  }, 
+  },
   // {
   //   name: 'test',
   //   title: 'test',
@@ -302,6 +308,13 @@ export const sideMenus = [
     ],
   },
   {
+    name: 'props',
+    title: '参数和属性传递',
+    children: [
+      { path: '/props/state', name: 'passProps', title: 'props', component: PropsComponent }
+    ],
+  },
+  {
     name: 'lodash',
     title: 'lodash',
     children: [
@@ -314,7 +327,14 @@ export const sideMenus = [
     children: [
       { path: '/try/copuy', name: 'copy', title: '复制', component: CopyComponent },
     ]
-  }
+  },
+  {
+    name: 'library',
+    title: '第三方库',
+    children: [
+      { path: '/lib/loadable', name: 'loadable', title: 'react-loadable', component: LoadableCom },
+    ]
+  },
 ];
 
 export const topMenus = [
