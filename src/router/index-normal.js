@@ -1,9 +1,9 @@
 /* 项目路由 */
 // 使用 react-loadable 库进行按需加
 import Loadable from 'react-loadable';
-import React from 'react';
+import Loading from '@/components/Loading';
 
-// import Demo1Component from '@/views/containers/demo1/Demo1';
+import Demo1Component from '@/views/containers/demo1/Demo1';
 import Demo2Component from '@/views/demo2/Demo2';
 import Demo3Component from '@/views/containers/demo3/Demo3';
 import Demo4Component from '@/views/demo4/Demo4';
@@ -13,33 +13,6 @@ import Demo5Component from '@/views/demo5/Demo5';
 // import Demo6Component from '@/views/demo6/Demo6'; // import 指令组件后，按需加载就失效了;
 import resolve from './resolve';
 // import resolve from './bundle';
-
-// Loading 组件
-const Loading = (props) => {
-  // Handle the loading state
-  if (props.isLoading) {
-    return <div>Loading...</div>;
-  }
-  // Handle the error state
-  else if (props.error) {
-    return <div>Sorry, there was a problem loading the page.</div>;
-  }
-  else {
-    return null;
-  }
-};
-// 获取组件的路径函数
-const getComPath = (filePath) => `../views/${filePath}`;
-
-const Demo1Component = Loadable({
-  loading: Loading,
-  loader: () => import(getComPath('containers/demo1/Demo1')),
-});
-const RouterRedux1 = Loadable({
-  loading: Loading,
-  loader: () => import(getComPath('routerRedux/Demo1')),
-});
-
 
 const getCom = (path) => () => import(`../views/${path}`);
 
@@ -124,13 +97,13 @@ const LoadableCom = asyncCom('ReactLibrary/ReactLoadable'); // react-loadable �
 // const RouterRedux1 = resolve(getCom('routerRedux/Demo1'));
 const RouterRedux2 = resolve(getCom('routerRedux/Demo2'));
 
-// const getComPath = (filePath) => `../views/${filePath}`;
-// const RouterRedux1 = Loadable({
-//   loader: () => import(getComPath('routerRedux/Demo1')), // 加载组件函数
-//   loading: Loading, // Loading 组件
-//   delay: 10000, // 延迟加载的时间
-//   timeout: 20000, // 超时设置
-// });
+const getComPath = (filePath) => `../views/${filePath}`;
+const RouterRedux1 = Loadable({
+  loader: () => import(getComPath('routerRedux/Demo1')), // 加载组件函数
+  loading: Loading, // Loading 组件
+  delay: 10000, // 延迟加载的时间
+  timeout: 20000, // 超时设置
+});
 // const RouterRedux2 = Loadable({
 //   loader: import(getCom('routerRedux/Demo2')),
 //   loading: Loading,
