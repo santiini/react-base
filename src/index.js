@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 
 import './index.css';
 // import App from './views/demo1/Demo1';
-// import App from './App'; // 正常的 admin 列表
-import App from './router/RouterMap'; // react-loadable 的测试
+import App from './App'; // 正常的 admin 列表
+// import App from './router/RouterMap'; // react-loadable 的测试
 // import store from './state/state';
 // import store from './redux/store'
 import configStore from './reducers/configStore';

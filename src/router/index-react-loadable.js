@@ -3,7 +3,44 @@
 import Loadable from 'react-loadable';
 import React from 'react';
 
-import getAsyncCom from '../utils/asyncComponent';
+// Loading 组件1
+const Loading = (props) => {
+  console.log(props);
+  // Handle the loading state
+  if (props.isLoading) {
+    return <div>Loading...</div>;
+  }
+  // Handle the error state
+  else if (props.error) {
+    return <div>Sorry, there was a problem loading the page.</div>;
+  }
+  else {
+    return null;
+  }
+};
+
+// Loading 组件2： 优化 loading， 
+const MyLoading = ({ error, isLoading, pastDelay, retry, timedOut }) => {
+  if (error) {
+    return <div>Error! <button onClick={retry}>Retry</button></div>;
+  } else if (timedOut) {
+    return <div>Taking a long time... <button onClick={retry}>Retry</button></div>;
+  } else if (pastDelay) {
+    return <div>Loading...</div>;
+  } else {
+    return null;
+  }
+};
+
+// 获取组件的路径函数
+const getAsyncCom = (filePath, loadingCom = Loading) => Loadable({
+  loading: Loading,
+  // loading: MyLoading,
+  loader: () => import(`../views/${filePath}`),
+  // 有时组件加载很快（<200ms），loading 屏只在屏幕上一闪而过。
+  // 一些用户研究已证实这会导致用户花更长的时间接受内容。如果不展示任何 loading 内容，用户会接受得更快, 所以有了delay参数。
+  // delay?: number = 200， 默认200
+});
 
 // const Demo1Component = Loadable({
 //   loading: Loading,
