@@ -84,6 +84,9 @@ const LoadableCom = getAsyncCom('ReactLibrary/ReactLoadable'); // react-loadable
 const RouterRedux2 = getAsyncCom('routerRedux/Demo2');
 const RouterRedux1 = getAsyncCom('navComponent/Nav1');
 
+// react theory study
+const PureComponent = getAsyncCom('Theory/PureComponent');
+
 // 处理左侧菜单栏的函数
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
@@ -337,6 +340,13 @@ export const sideMenus = [
     children: [
       { path: '/routerRedux1', name: 'routerRedux1', title: 'routerRedux1', component: RouterRedux1 },
       { path: '/routerRedux2', name: 'routerRedux2', title: 'routerRedux2', component: RouterRedux2 },
+    ],
+  },
+  {
+    name: 'theory',
+    title: 'react-theory',
+    children: [
+      { path: '/purecomponent', name: 'purecomponent', title: 'PureComponent', component: PureComponent },
     ],
   },
 ];

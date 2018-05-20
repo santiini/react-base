@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 
@@ -38,11 +38,11 @@ class SiderBar extends Component {
         <Menu
           mode="inline"
           defaultSelectedKeys={['demo1']}
-          style={{height: '100%'}}
+          style={{ height: '100%', overflow: 'scroll', paddingBottom: '30px' }}
         >
           {menus}
         </Menu>
-    </Sider>
+      </Sider>
     )
   }
 }
