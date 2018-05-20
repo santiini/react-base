@@ -12,6 +12,10 @@ import React from 'react';
  * 4. 设置延迟: 在设置时间内一直 loading 
  */
 const Loading = ({ error, timeOut, retry, pastDelay }) => {
+  console.log(error);
+  console.log(timeOut);
+  console.log(retry);
+  console.log(pastDelay);
   if (error) {
     return <div>Error! <button onClick={retry}>Retry</button></div>;
   } else if (timeOut) {
