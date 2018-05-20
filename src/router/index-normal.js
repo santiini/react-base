@@ -1,98 +1,116 @@
 /* 项目路由 */
 // 使用 react-loadable 库进行按需加
-import React from 'react';
 import Loadable from 'react-loadable';
-<<<<<<< HEAD
-import React from 'react';
-=======
-// import Loading from '@/components/Loading';
->>>>>>> 70f03f5b88bcbb17d476b0a5a3f27e876d236f0e
+import Loading from '@/components/Loading';
 
-import getAsyncCom from '../utils/asyncComponent';
+import Demo1Component from '@/views/containers/demo1/Demo1';
+import Demo2Component from '@/views/demo2/Demo2';
+import Demo3Component from '@/views/containers/demo3/Demo3';
+import Demo4Component from '@/views/demo4/Demo4';
+import Demo5Component from '@/views/demo5/Demo5';
 
-// const Demo1Component = Loadable({
-//   loading: Loading,
-//   loader: () => import(getComPath('containers/demo1/Demo1')),
-// });
-// demos 简单测试
-const Demo1Component = getAsyncCom('containers/demo1/Demo1');
-const Demo2Component = getAsyncCom('demo2/Demo2');
-const Demo3Component = getAsyncCom('containers/demo3/Demo3');
-const Demo4Component = getAsyncCom('demo4/Demo4');
-const Demo5Component = getAsyncCom('demo5/Demo5');
+// 按需加载
+// import Demo6Component from '@/views/demo6/Demo6'; // import 指令组件后，按需加载就失效了;
+import resolve from './resolve';
+// import resolve from './bundle';
 
-// Nav 导航组件
-const NavComponent1 = getAsyncCom('navComponent/Nav1');
-const NavComponent2 = getAsyncCom('navComponent/Nav2');
-const NavComponent3 = getAsyncCom('navComponent/Nav3');
+const getCom = (path) => () => import(`../views/${path}`);
 
-// resolve 测试
-const Resolve1 = getAsyncCom('demo6/Demo6');
-const Resolve2 = getAsyncCom('Resolve2/Resolve2');
-const Resolve3 = getAsyncCom('resolve3/Resolve3');
+const asyncCom = (component) => {
+  const getCom = path => () => import(`../views/${path}`);
+  return resolve(getCom(component));
+};
+const asyncComponent = (path) => resolve(getCom(path));
+
+// import NavComponent1 from '@/views/navComponent/Nav1'; // 非按需加载
+// const NavComponent1 = resolve(() => import(`${views}/navComponent/Nav1`)); // error
+// const NavComponent2 = resolve(() => import('../views/navComponent/Nav1')); // OK
+const NavComponent1 = resolve(getCom('navComponent/Nav1'));
+const NavComponent2 = resolve(getCom('navComponent/Nav2'));
+const NavComponent3 = resolve(getCom('navComponent/Nav3'));
+
+// const Resolve1 = resolve(() => import('../views/demo6/Demo6'));
+// const Resolve1 = resolve(getCom('demo6/Demo6'));
+// const Resolve2 = resolve(getCom('Resolve2/Resolve2'));
+// const Resolve3 = resolve(getCom('resolve3/Resolve3'));
+const Resolve1 = asyncCom('demo6/Demo6');
+const Resolve2 = asyncCom('Resolve2/Resolve2');
+const Resolve3 = asyncCom('resolve3/Resolve3');
 
 // 形式三： 利用异步加载函数 和 import() 函数实现的按需加载;
-const Resolve4 = getAsyncCom('Resolve1');
-const Resolve5 = getAsyncCom('Resolve2');
+// const Resolve4 = resolve(getCom('Resolve1'));
+// const Resolve5 = resolve(getCom('Resolve2'));
+const Resolve4 = asyncComponent('Resolve1');
+const Resolve5 = asyncComponent('Resolve2');
 
 // 面试题的学习
-const Learn1 = getAsyncCom('study/Learn1');
-const Learn2 = getAsyncCom('study/Learn2');
-const Learn3 = getAsyncCom('study/Learn3');
-const Learn4 = getAsyncCom('study/Learn4');
+const Learn1 = resolve(getCom('study/Learn1'));
+const Learn2 = resolve(getCom('study/Learn2'));
+const Learn3 = resolve(getCom('study/Learn3'));
+const Learn4 = resolve(getCom('study/Learn4'));
 
 // react-redux 测试
-const ReduxDemo1 = getAsyncCom('redux/Demo1');
-const ReduxDemo2 = getAsyncCom('redux/Demo2');
-const ReduxDemo3 = getAsyncCom('redux/Demo3');
-const ReduxDemo4 = getAsyncCom('redux/Demo4');
-const ReduxDemo5 = getAsyncCom('redux/Demo5');
+const ReduxDemo1 = resolve(getCom('redux/Demo1'));
+const ReduxDemo2 = resolve(getCom('redux/Demo2'));
+const ReduxDemo3 = resolve(getCom('redux/Demo3'));
+const ReduxDemo4 = resolve(getCom('redux/Demo4'));
+const ReduxDemo5 = resolve(getCom('redux/Demo5'));
 
 // react-router
-const RouteDemo1 = getAsyncCom('router/Match');
-const RouteDemo2 = getAsyncCom('router/History');
-const RouteDemo3 = getAsyncCom('router/Keep');
+const RouteDemo1 = resolve(getCom('router/Match'));
+const RouteDemo2 = resolve(getCom('router/History'));
+const RouteDemo3 = resolve(getCom('router/Keep'));
 
 // hoc
-const HocDemo1 = getAsyncCom('Hoc/Demo1');
-const HocDemo2 = getAsyncCom('Hoc/Demo2');
+const HocDemo1 = resolve(getCom('Hoc/Demo1'));
+const HocDemo2 = resolve(getCom('Hoc/Demo2'));
 
 // props 参数传递
-const PropsComponent = getAsyncCom('passProps/props');
+const PropsComponent = resolve(getCom('passProps/props'));
 
 // antd
-const AntdDemo1 = getAsyncCom('Antd/Demo1');
-const AntdDemo2 = getAsyncCom('Antd/Demo2');
-const AntdDemo3 = getAsyncCom('Antd/Demo3');
-const AntdDemo4 = getAsyncCom('Antd/Demo4');
-const AntdDemo5 = getAsyncCom('Antd/Demo5');
+const AntdDemo1 = resolve(getCom('Antd/Demo1'));
+const AntdDemo2 = resolve(getCom('Antd/Demo2'));
+const AntdDemo3 = resolve(getCom('Antd/Demo3'));
+const AntdDemo4 = resolve(getCom('Antd/Demo4'));
+const AntdDemo5 = resolve(getCom('Antd/Demo5'));
 
 // kol
-const KolCom = getAsyncCom('kol/index');
-const KolCom2 = getAsyncCom('kol/Demo2');
-const KolCom3 = getAsyncCom('kol/Demo3');
+const KolCom = resolve(getCom('kol/index'));
+const KolCom2 = resolve(getCom('kol/Demo2'));
+const KolCom3 = resolve(getCom('kol/Demo3'));
 
 // test
 // const TestCom = resolve(getCom('test/Demo1'));
-const LookComponent = getAsyncCom('Look/ReceiveProps');
+const LookComponent = asyncCom('Look/ReceiveProps');
 
 // lodash
-const LodashMap = getAsyncCom('Lodash/Map');
+const LodashMap = asyncCom('Lodash/Map');
 
 // 功能
-const CopyComponent = getAsyncCom('try/Copy');
+const CopyComponent = asyncCom('try/Copy');
 
 // 第三方库
-const LoadableCom = getAsyncCom('ReactLibrary/ReactLoadable'); // react-loadable 按需加载
+const LoadableCom = asyncCom('ReactLibrary/ReactLoadable'); // react-loadable 按需加载
 
 // react-router-redux
-const RouterRedux2 = getAsyncCom('routerRedux/Demo2');
-const RouterRedux1 = getAsyncCom('navComponent/Nav1');
+// const RouterRedux1 = resolve(getCom('routerRedux/Demo1'));
+const RouterRedux2 = resolve(getCom('routerRedux/Demo2'));
 
-// react theory study
-const PureComponent = getAsyncCom('Theory/PureComponent');
+const getComPath = (filePath) => `../views/${filePath}`;
+const RouterRedux1 = Loadable({
+  loader: () => import(getComPath('routerRedux/Demo1')), // 加载组件函数
+  loading: Loading, // Loading 组件
+  delay: 10000, // 延迟加载的时间
+  timeout: 20000, // 超时设置
+});
+// const RouterRedux2 = Loadable({
+//   loader: import(getCom('routerRedux/Demo2')),
+//   loading: Loading,
+//   delay: 5000,
+//   timeout: 10000,
+// });
 
-// 处理左侧菜单栏的函数
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
     prev.push(cur);
@@ -345,13 +363,6 @@ export const sideMenus = [
     children: [
       { path: '/routerRedux1', name: 'routerRedux1', title: 'routerRedux1', component: RouterRedux1 },
       { path: '/routerRedux2', name: 'routerRedux2', title: 'routerRedux2', component: RouterRedux2 },
-    ],
-  },
-  {
-    name: 'theory',
-    title: 'react-theory',
-    children: [
-      { path: '/purecomponent', name: 'purecomponent', title: 'PureComponent', component: PureComponent },
     ],
   },
 ];

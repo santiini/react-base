@@ -1,14 +1,46 @@
 /* 项目路由 */
 // 使用 react-loadable 库进行按需加
-import React from 'react';
 import Loadable from 'react-loadable';
-<<<<<<< HEAD
 import React from 'react';
-=======
-// import Loading from '@/components/Loading';
->>>>>>> 70f03f5b88bcbb17d476b0a5a3f27e876d236f0e
 
-import getAsyncCom from '../utils/asyncComponent';
+// Loading 组件1
+const Loading = (props) => {
+  console.log(props);
+  // Handle the loading state
+  if (props.isLoading) {
+    return <div>Loading...</div>;
+  }
+  // Handle the error state
+  else if (props.error) {
+    return <div>Sorry, there was a problem loading the page.</div>;
+  }
+  else {
+    return null;
+  }
+};
+
+// Loading 组件2： 优化 loading， 
+const MyLoading = ({ error, isLoading, pastDelay, retry, timedOut }) => {
+  if (error) {
+    return <div>Error! <button onClick={retry}>Retry</button></div>;
+  } else if (timedOut) {
+    return <div>Taking a long time... <button onClick={retry}>Retry</button></div>;
+  } else if (pastDelay) {
+    return <div>Loading...</div>;
+  } else {
+    return null;
+  }
+};
+
+// 获取组件的路径函数
+const getAsyncCom = (filePath, loadingCom = Loading) => Loadable({
+  loading: Loading,
+  // loading: MyLoading,
+  loader: () => import(`../views/${filePath}`),
+  // 有时组件加载很快（<200ms），loading 屏只在屏幕上一闪而过。
+  // 一些用户研究已证实这会导致用户花更长的时间接受内容。如果不展示任何 loading 内容，用户会接受得更快, 所以有了delay参数。
+  // delay?: number = 200， 默认200
+});
 
 // const Demo1Component = Loadable({
 //   loading: Loading,
@@ -88,9 +120,6 @@ const LoadableCom = getAsyncCom('ReactLibrary/ReactLoadable'); // react-loadable
 // react-router-redux
 const RouterRedux2 = getAsyncCom('routerRedux/Demo2');
 const RouterRedux1 = getAsyncCom('navComponent/Nav1');
-
-// react theory study
-const PureComponent = getAsyncCom('Theory/PureComponent');
 
 // 处理左侧菜单栏的函数
 const getPath = (arr) => arr.reduce((prev, cur) => {
@@ -345,13 +374,6 @@ export const sideMenus = [
     children: [
       { path: '/routerRedux1', name: 'routerRedux1', title: 'routerRedux1', component: RouterRedux1 },
       { path: '/routerRedux2', name: 'routerRedux2', title: 'routerRedux2', component: RouterRedux2 },
-    ],
-  },
-  {
-    name: 'theory',
-    title: 'react-theory',
-    children: [
-      { path: '/purecomponent', name: 'purecomponent', title: 'PureComponent', component: PureComponent },
     ],
   },
 ];

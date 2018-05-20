@@ -12,13 +12,13 @@ import Loading from './Loading';
 const Comp1 = Loadable({
   loader: () => import('./Comp1'),
   loading: Loading,
-  delay: 5000000,
+  // delay: 5000000,
 });
 const Comp2 = Loadable({
   loader: () => import('./Comp2'),
   loading: Loading,
-  delay: 40000000,
-  timeout: 10000000,
+  delay: 40000,
+  // timeout: 10000000,
 });
 
 class LoadableCom extends Component {
