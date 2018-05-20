@@ -4,7 +4,11 @@ import { Button } from 'antd';
 
 import Loading from './Loading';
 
-// 按需加载组件
+// 1.  正常引入组件，不会按需加载;
+// import Comp1 from './Comp1';
+// import Comp2 from './Comp2';
+
+// 2. 使用 react-loadable, 实现按需加载组件
 const Comp1 = Loadable({
   loader: () => import('./Comp1'),
   loading: Loading,
@@ -29,7 +33,7 @@ class LoadableCom extends Component {
 
   onMouseOver = () => {
     console.log(1111111);
-    Comp2.preload();
+    // Comp2.preload();
   };
 
   render() {
