@@ -3,7 +3,7 @@
  */
 import Loadable from 'react-loadable';
 import React from 'react';
-
+const noop = () => {};
 // Loading 组件1
 const Loading = (props) => {
   console.log(props);
@@ -21,12 +21,23 @@ const Loading = (props) => {
 };
 
 // Loading 组件2： 优化 loading， 
-const MyLoading = ({ error, isLoading, pastDelay, retry, timedOut }) => {
+/**
+ * Loading 组件
+ * @param {*} 
+ * 1. error: 错误展示;
+ * 2. timeOut: 超市显示
+ * 3. retry: 超时重试
+ * 4. 设置延迟: 在设置时间内一直 loading 
+ */
+const MyLoading = ({ error, isLoading, pastDelay, retry = noop, timedOut }) => {
   if (error) {
-    return <div>Error! <button onClick={retry}>Retry</button></div>;
+    console.log(error)
+    return <div>Components Load Error!!! <button onClick={retry}>Retry</button></div>;
   } else if (timedOut) {
+    console.log(timedOut);
     return <div>Taking a long time... <button onClick={retry}>Retry</button></div>;
   } else if (pastDelay) {
+    console.log(pastDelay);
     return <div>Loading...</div>;
   } else {
     return null;

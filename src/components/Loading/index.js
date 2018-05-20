@@ -3,6 +3,8 @@
  */
 import React from 'react';
 
+const noop = () => {};
+
 /**
  * Loading 组件
  * @param {*} 
@@ -11,13 +13,14 @@ import React from 'react';
  * 3. retry: 超时重试
  * 4. 设置延迟: 在设置时间内一直 loading 
  */
-const Loading = ({ error, timeOut, retry, pastDelay }) => {
+const Loading = ({ error, timeOut, retry = noop, pastDelay }) => {
   console.log(error);
+  debugger
   console.log(timeOut);
   console.log(retry);
   console.log(pastDelay);
   if (error) {
-    return <div>Error! <button onClick={retry}>Retry</button></div>;
+    return <div>Error!!!{error} <button onClick={retry}>Retry</button></div>;
   } else if (timeOut) {
     return <div>Taking a long time... <button onClick={retry}>Retry</button></div>;
   } else if (pastDelay) {

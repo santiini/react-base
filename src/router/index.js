@@ -1,12 +1,7 @@
 /* 项目路由 */
 // 使用 react-loadable 库进行按需加
-import React from 'react';
-import Loadable from 'react-loadable';
-<<<<<<< HEAD
-import React from 'react';
-=======
-// import Loading from '@/components/Loading';
->>>>>>> 70f03f5b88bcbb17d476b0a5a3f27e876d236f0e
+// import React from 'react';
+// import Loadable from 'react-loadable';
 
 import getAsyncCom from '../utils/asyncComponent';
 
@@ -82,8 +77,8 @@ const LodashMap = getAsyncCom('Lodash/Map');
 // 功能
 const CopyComponent = getAsyncCom('try/Copy');
 
-// 第三方库
-const LoadableCom = getAsyncCom('ReactLibrary/ReactLoadable'); // react-loadable 按需加载
+// 第三方库: 使用按需加载是，路径必须指定到 index.js 文件;
+const LoadableCom = getAsyncCom('ReactLibrary/ReactLoadable/index'); // react-loadable 按需加载
 
 // react-router-redux
 const RouterRedux2 = getAsyncCom('routerRedux/Demo2');
