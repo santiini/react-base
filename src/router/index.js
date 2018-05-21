@@ -1,5 +1,8 @@
 /* 项目路由 */
 // 使用 react-loadable 库进行按需加
+// import React from 'react';
+// import Loadable from 'react-loadable';
+
 import getAsyncCom from '../utils/asyncComponent';
 
 // const Demo1Component = Loadable({
@@ -74,8 +77,8 @@ const LodashMap = getAsyncCom('Lodash/Map');
 // 功能
 const CopyComponent = getAsyncCom('try/Copy');
 
-// 第三方库
-const LoadableCom = getAsyncCom('ReactLibrary/ReactLoadable'); // react-loadable 按需加载
+// 第三方库: 使用按需加载是，路径必须指定到 index.js 文件;
+const LoadableCom = getAsyncCom('ReactLibrary/ReactLoadable/index'); // react-loadable 按需加载
 
 // react-router-redux
 const RouterRedux2 = getAsyncCom('routerRedux/Demo2');
@@ -83,6 +86,7 @@ const RouterRedux1 = getAsyncCom('navComponent/Nav1');
 
 // react theory study
 const PureComponent = getAsyncCom('Theory/PureComponent');
+const RenderComponent = getAsyncCom('Theory/RenderFunc');
 
 // 处理左侧菜单栏的函数
 const getPath = (arr) => arr.reduce((prev, cur) => {
@@ -344,6 +348,7 @@ export const sideMenus = [
     title: 'react-theory',
     children: [
       { path: '/purecomponent', name: 'purecomponent', title: 'PureComponent', component: PureComponent },
+      { path: '/renderfunc', name: 'renderfunc', title: 'renderFunc优化', component: RenderComponent },
     ],
   },
 ];
