@@ -88,6 +88,9 @@ const RouterRedux1 = getAsyncCom('navComponent/Nav1');
 const PureComponent = getAsyncCom('Theory/PureComponent');
 const RenderComponent = getAsyncCom('Theory/RenderFunc');
 
+// immutable
+const ImmutableDemo1 = getAsyncCom('Immutable/Demo1');
+
 // 处理左侧菜单栏的函数
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
@@ -351,6 +354,13 @@ export const sideMenus = [
       { path: '/renderfunc', name: 'renderfunc', title: 'renderFunc优化', component: RenderComponent },
     ],
   },
+  {
+    name: 'immutable',
+    title: 'immutable',
+    children: [
+      { path: '/immutable/demo1', name: 'immutable-demo1', title: 'immutable-demo1', component: ImmutableDemo1 },
+    ]
+  }
 ];
 
 export const topMenus = [

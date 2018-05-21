@@ -5,11 +5,15 @@ import todoReducers from './todoReducers';
 import userReducers from './userReducers';
 import commonReducers from './commonState';
 
+// immutable
+import PostReducers from './Immutable/Post';
+
 const rootReducers = combineReducers({
   routing: routerReducer,
   todos: todoReducers,
   users: userReducers,
   common: commonReducers,
+  posts: PostReducers,
 });
 
 export const router = routerReducer;
