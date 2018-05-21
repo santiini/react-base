@@ -1,5 +1,6 @@
 /**
  * bind(), 箭头函数 在 react 中引其 re-render 问题的解决方案;
+ * 避免不必要的重复渲染;
  */
 import React, { PureComponent } from 'react';
 
@@ -12,7 +13,7 @@ class User extends PureComponent {
 
   render() {
     const { user: { name } } = this.props;
-    console.log(`${name} just rendered`);
+    console.log('User1 re-render');
     return (
       <li>
         <input
@@ -21,7 +22,7 @@ class User extends PureComponent {
           onClick={this.onDeleteUser}
         />
         {name}
-      </li>    
+      </li>
     )
   }
 }

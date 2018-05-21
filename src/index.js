@@ -2,6 +2,7 @@ import React from 'react';
 import { AppContainer } from 'react-hot-loader';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+import { whyDidYouUpdate } from 'why-did-you-update';
 
 import './index.css';
 // import App from './views/demo1/Demo1';
@@ -13,8 +14,12 @@ import configStore from './reducers/configStore';
 
 import registerServiceWorker from './registerServiceWorker';
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+// 检测 React 的 re-render;
+if (process.env.NODE_ENV !== 'production') {
+  whyDidYouUpdate(React);
+}
 
+// ReactDOM.render(<App />, document.getElementById('root'));
 const store = configStore();
 const renderFunc = Component => {
   // 增加react-hot-loader保持状态刷新操作，如果不需要可去掉并把下面注释的打开

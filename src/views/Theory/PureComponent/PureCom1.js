@@ -12,9 +12,19 @@ class PureCom1 extends PureComponent {
     ]
   };
 
-  changeItem = (user) => {
-    console.log(user)
-    console.log(user.value)
+  // 在 PureComponent 中， 会对 state 和 props 的值进行浅比较，只有不一致时，才会重新渲染:
+  //  1. 简单值: 比较值是否一致
+  //  2. 复杂对象， 会比较内存指向知否一致;
+  // tips:  不要改变 props 和 state 中的对象和数组，因为这样的话，纯子组件不会更新，正确做法是:
+  //      借助ES6的object新特性、array的扩展运算符或者使用不可变工具库来返回新对象，即改变对象的引用; 
+  changeItem = (id) => () => {
+    console.log(id);
+    // 测试 PureComponent
+    this.state.list.forEach((item, i) => {
+      if (item.id === id) {
+        item.value = 'checked'
+      }
+    })
   }
 
   renderItem = (item, i) => {
@@ -22,9 +32,13 @@ class PureCom1 extends PureComponent {
     return (
       <div key={`item_${i}`}>
         <div>index: {i}, value: {item.value}</div>
-        <Button onClick={this.changeItem}>改变value</Button>
+        <Button onClick={this.changeItem(item.id)}>改变value</Button>
       </div>
     )
+  }
+
+  changeRender = () => {
+    this.setState({ name: 'changed name' });
   }
 
   render() {
@@ -37,6 +51,9 @@ class PureCom1 extends PureComponent {
         {
           list.map(this.renderItem)
         }
+        <h5>改变导致 re-render</h5>
+        <Button onClick={this.changeRender}>re-render</Button>
+        <div className="">{name}</div>
       </div>
     )
   }

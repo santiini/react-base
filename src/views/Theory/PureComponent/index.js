@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
-import { Card, Button } from 'antd';
+import { Card, Button, Tabs } from 'antd';
 
 import PureDemo2 from './PureCom1';
 import User from './User';
+import User2 from './User2';
+
+const { TabPane } = Tabs;
 
 class PureCom extends Component {
   state = {
     title: 'PureComponent学习',
     user: [
+      { name: '小花', id: 1 },
+      { name: '小白', id: 2 },
+      { name: '小黑', id: 3 },
+      { name: '小红', id: 4 },
+    ],
+    user2: [
       { name: '小花', id: 1 },
       { name: '小白', id: 2 },
       { name: '小黑', id: 3 },
@@ -39,28 +48,51 @@ class PureCom extends Component {
       user: preState.user.filter((user) => user.id !== id),
     }))
   }
+  deleteUser2 = (id) => {
+    this.setState((preState) => ({
+      user2: preState.user2.filter((user) => user.id !== id),
+    }))
+  }
 
   render() {
     console.log('index render');
-    const { user } = this.state;
+    const { user, user2 } = this.state;
     return (
       <div className="">
-        <Card title={this.state.title}>
-          <Button onClick={this.reRender}>Component Render</Button>
-          <h4>1. PureComponent学习</h4>
-          <PureDemo2 />
-          <h4>2. User：箭头函数的react问题</h4>
-          {
-            user.map((user) => (
-              <User
-                key={user.id}
-                user={user}
-                // onDeleteClick={() => this.deleteUser(user.id)}
-                onDeleteClick={this.deleteUser}
-              />
-            ))
-          }
-        </Card>
+        <Tabs>
+          <TabPane tab="1. PureComponent学习" key="pure_demo1">
+            <Card title={this.state.title}>
+              <Button onClick={this.reRender}>Component Render</Button>
+              <h4>1. PureComponent学习</h4>
+              <PureDemo2 />
+            </Card>
+          </TabPane>
+          <TabPane tab="2. User：箭头函数的react问题" key="pure_demo2">
+            <Card title="箭头函数和bind()">
+              <h4>1. 箭头函数导致的问题重现</h4>
+              {
+                user2.map((user) => (
+                  <User2
+                    key={user.id}
+                    onDeleteClick={() => this.deleteUser2(user.id)}
+                    name={user.name}
+                  />
+                ))
+              }
+              <h4>2. User：箭头函数的react问题</h4>
+              {
+                user.map((user) => (
+                  <User
+                    key={user.id}
+                    user={user}
+                    // onDeleteClick={() => this.deleteUser(user.id)}
+                    onDeleteClick={this.deleteUser}
+                  />
+                ))
+              }
+            </Card>
+          </TabPane>
+        </Tabs>
       </div>
     )
   }
