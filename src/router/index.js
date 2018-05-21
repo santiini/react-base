@@ -86,6 +86,7 @@ const RouterRedux1 = getAsyncCom('navComponent/Nav1');
 
 // react theory study
 const PureComponent = getAsyncCom('Theory/PureComponent');
+const RenderComponent = getAsyncCom('Theory/RenderFunc');
 
 // 处理左侧菜单栏的函数
 const getPath = (arr) => arr.reduce((prev, cur) => {
@@ -347,6 +348,7 @@ export const sideMenus = [
     title: 'react-theory',
     children: [
       { path: '/purecomponent', name: 'purecomponent', title: 'PureComponent', component: PureComponent },
+      { path: '/renderfunc', name: 'renderfunc', title: 'renderFunc优化', component: RenderComponent },
     ],
   },
 ];

@@ -18,8 +18,7 @@ class PureCom1 extends PureComponent {
   }
 
   renderItem = (item, i) => {
-    console.log(item);
-    console.log(i);
+    // console.log(item);
     return (
       <div key={`item_${i}`}>
         <div>index: {i}, value: {item.value}</div>
@@ -29,6 +28,7 @@ class PureCom1 extends PureComponent {
   }
 
   render() {
+    console.log('purecom render');
     const { name, list } = this.state;
     return (
       <div className="">
