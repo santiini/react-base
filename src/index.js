@@ -16,7 +16,11 @@ import registerServiceWorker from './registerServiceWorker';
 
 // 检测 React 的 re-render;
 if (process.env.NODE_ENV !== 'production') {
-  whyDidYouUpdate(React);
+  // whyDidYouUpdate(React);
+  whyDidYouUpdate(React, {
+    // include: ,
+    exclude: [/^SubMenu/, /^ProxyComponent/],
+  });
 }
 
 // ReactDOM.render(<App />, document.getElementById('root'));

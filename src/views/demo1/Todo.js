@@ -6,17 +6,23 @@ import deleteImg from '../../assets/img/delete.png';
 import checkedImg from '../../assets/img/sq-checked.png';
 import unCheckedImg from '../../assets/img/unchecked.png';
 
-const Todo = ({item, handleDelete, changeStatus}) => {
+const Todo = ({ item, handleDelete, changeStatus }) => {
   const { text, completed, id } = item;
+  const changeById = () => {
+    changeStatus(id);
+  };
+  const deleteByText = () => {
+    handleDelete(text);
+  }
   return (
     <li>
       <div className="todo-item">
-        <div className="todo-status" onClick={() => changeStatus(id)}>
+        <div className="todo-status" onClick={changeById}>
           <img height="28" src={completed ? checkedImg : unCheckedImg} alt="checked" />
         </div>
         <div className="todo-content">{text}</div>
         {/* <div className="todo-delete" onClick={() => handleDelete(text)}>删除</div> */}
-        <img className="delete-icon" src={deleteImg} onClick={() => handleDelete(text)} alt="删除" height="24" />
+        <img className="delete-icon" src={deleteImg} onClick={deleteByText} alt="删除" height="24" />
       </div>
     </li>
   )

@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import createHistory from 'history/createBrowserHistory'
-import { ConnectedRouter } from 'react-router-redux';
+// import { ConnectedRouter } from 'react-router-redux';
 
 import Navbar from './views/layout/Navbar';
 import Siderbar from './views/layout/Siderbar';
@@ -47,16 +47,16 @@ class AppLayout extends Component {
                 <Switch>
                   <Route path="/" exact component={Home} />
                   {
-                    routes.map(({path, name, component}) => (
-                      <Route path={path} key={name} component={component} />  
+                    routes.map(({ path, name, component }) => (
+                      <Route path={path} key={name} component={component} />
                     ))
                   }
                 </Switch>
               </Content>
-              <Footer style={{textAlign: 'center'}}>Ant Design ©2016 Created by Ant UED</Footer>
+              <Footer style={{ textAlign: 'center' }}>Ant Design ©2016 Created by Ant UED</Footer>
             </Layout>
           </Layout>
-        </Layout>    
+        </Layout>
       </Router>
     )
   }

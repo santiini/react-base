@@ -36,7 +36,7 @@ export default class Demo1 extends Component {
     const { todos, leftNum, clearCompleted } = this.props;
     return (
       <div className="demo1">
-        <h4 style={{textAlign: 'center'}}>Todolist: redux, react-redux</h4>
+        <h4 style={{ textAlign: 'center' }}>Todolist: redux, react-redux</h4>
         <InputWrapper val={this.state.currentVal} changeHandle={this.addTodo} />
         <div className="todo-list">
           <ul className="">
@@ -44,12 +44,12 @@ export default class Demo1 extends Component {
               // 形式1： 没有子组件
               // todos.map((todo,i) => <li key={i}>{todo && todo.text}</li>)
               // 形似2： 使用子组件
-              todos.map((todo,i) => 
+              todos.map((todo, i) =>
                 <Todo
-                  key={i} 
+                  key={i}
                   item={todo}
                   changeStatus={this.toggleTodo}
-                  handleDelete={this.deleteTodo} 
+                  handleDelete={this.deleteTodo}
                 />
               )}
           </ul>
@@ -63,7 +63,7 @@ export default class Demo1 extends Component {
               <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>
               <FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>
             </div>
-            <div className="todos-clear" onClick={() => clearCompleted()}>clear completed</div>
+            <div className="todos-clear" onClick={clearCompleted}>clear completed</div>
           </div>
         </div>
         <div className="add-todo">
