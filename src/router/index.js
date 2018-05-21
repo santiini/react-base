@@ -1,13 +1,5 @@
 /* 项目路由 */
 // 使用 react-loadable 库进行按需加
-import React from 'react';
-import Loadable from 'react-loadable';
-<<<<<<< HEAD
-import React from 'react';
-=======
-// import Loading from '@/components/Loading';
->>>>>>> 70f03f5b88bcbb17d476b0a5a3f27e876d236f0e
-
 import getAsyncCom from '../utils/asyncComponent';
 
 // const Demo1Component = Loadable({
