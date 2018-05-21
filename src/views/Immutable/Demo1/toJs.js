@@ -1,13 +1,13 @@
 /**
- * 高阶组件: 负责转化 immutable 数据为一般的数据
+ * 高阶组件: 负责转化 immutable 数据为 JS 的数据
  */
 import React from 'react';
 import { Iterable } from 'immutable';
 
-export const toJS = (WrappedComponent) => (wrappedComponentProps) => {
+const toJS = (WrappedComponent) => (wrappedComponentProps) => {
   const KEY = 0;
   const VALUE = 1;
-  const propsJS = Object.keys(wrappedComponentProps)
+  const propsJS = Object.entries(wrappedComponentProps)
     .reduce((newProps, wrappedComponentProps) => {
       newProps[wrappedComponentProps[KEY]] = Iterable.isIterable(wrappedComponentProps[VALUE])
         ? wrappedComponentProps[VALUE].toJS()
@@ -19,6 +19,7 @@ export const toJS = (WrappedComponent) => (wrappedComponentProps) => {
 }
 
 
+export default toJS;
 /**
  * tips: 参考链接:
  * 1. https://juejin.im/post/59bb829a6fb9a00a51437af8

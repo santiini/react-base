@@ -90,6 +90,7 @@ const RenderComponent = getAsyncCom('Theory/RenderFunc');
 
 // immutable
 const ImmutableDemo1 = getAsyncCom('Immutable/Demo1');
+const ImmutableDemo2 = getAsyncCom('Immutable/Demo2');
 
 // 处理左侧菜单栏的函数
 const getPath = (arr) => arr.reduce((prev, cur) => {
@@ -359,6 +360,7 @@ export const sideMenus = [
     title: 'immutable',
     children: [
       { path: '/immutable/demo1', name: 'immutable-demo1', title: 'immutable-demo1', component: ImmutableDemo1 },
+      { path: '/immutable/demo2', name: 'immutable-demo2', title: 'immutable-demo2', component: ImmutableDemo2 },
     ]
   }
 ];
