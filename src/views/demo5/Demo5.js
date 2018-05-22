@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import { Button, List } from 'antd';
 import { connect } from 'react-redux';

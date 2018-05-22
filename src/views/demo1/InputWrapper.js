@@ -1,8 +1,9 @@
+/* eslint-disable */
 // 函数式组件
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const InputWrapper = ({changeHandle}) => {
+const InputWrapper = ({ changeHandle }) => {
   // const changeInput = (e) => {
   //   changeHandle(e.target.value);
   // };
@@ -19,7 +20,7 @@ const InputWrapper = ({changeHandle}) => {
 
   return (
     <div className="input-wrapper">
-      <input 
+      <input
         name="todoName"
         type="text"
         ref={(dom) => input = dom}

@@ -5,9 +5,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 
 import reducers from './rootReducers';
-import { initialState as todos } from './todoReducers';
-import { initialState as users } from './userReducers';
-import { router as routing } from './rootReducers';
+// import { initialState as todos } from './todoReducers';
+// import { initialState as users } from './userReducers';
+// import { router as routing } from './rootReducers';
 import { history } from '../App';
 
 const middleware = routerMiddleware(history);

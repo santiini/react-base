@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Card, Button } from 'antd';
+import { Card } from 'antd';
 import { connect } from 'react-redux';
 
 import Post from './Post';

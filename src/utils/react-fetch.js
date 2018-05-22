@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* react 中 fetch 的封装使用 */
 const commun_url = 'https://cnodejs.org/api/v1'; // 服务器地址
 // let token = '';
@@ -24,7 +25,7 @@ function fetchRequest(url, options = {}) {
     } else {
       url += '?' + paramsArr.join('&');
     }
-  } 
+  }
   if (method.toUpperCase() === 'POST') {
     // post 请求参数转化
     options.body = JSON.stringify(options.param);

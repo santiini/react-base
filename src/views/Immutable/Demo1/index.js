@@ -3,8 +3,8 @@
  */
 import { connect } from 'react-redux';
 
-import Post from './Post';
-import toJS from './toJs';
+import Post from './PostList';
+// import toJS from './toJs'; // 这是一种使用方式;
 
 import * as postActions from '@/actions/immutable/Post';
 
@@ -24,4 +24,5 @@ const mapDispatchToProps = {
   deleteOne: postActions.deletePost,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(toJS(Post));
+// export default connect(mapStateToProps, mapDispatchToProps)(toJS(Post)); // 这是一种使用方式;
+export default connect(mapStateToProps, mapDispatchToProps)(Post);

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import { Button } from 'antd'
 
@@ -23,11 +24,11 @@ class Resolve3 extends Component {
         <h4>Resolve333 按需加载</h4>
         <Button onClick={this.showDialog}>外部按钮</Button>
         <div className="" style={{ display: 'none' }}>
-          <div ref={(dom) => {this.testBtn = dom;}} onClick={this.handleClick}>内部按钮</div>
+          <div ref={(dom) => { this.testBtn = dom; }} onClick={this.handleClick}>内部按钮</div>
         </div>
       </div>
     )
   }
 }
- 
+
 export default Resolve3;

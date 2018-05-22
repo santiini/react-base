@@ -41,10 +41,9 @@ export default createReducer(initialState, {
       const { data } = action.payload.data;
       state.set('isRequesting', false)
         .set('isSuccessed', true);
-      state.setIn(['resource', 'data'], data);
-      // data.forEach((item) => {
-      //   state.setIn(['data', item.id.toString()], item);
-      // });
+      // tips: 注意在 Immutable-redux 中，要保证向 redux 中更新、插入数据时，必须使用 Immutable.formJS 转化为 Immutable 类型;
+      state.setIn(['resource', 'data'], Immutable.fromJS(data));
+      // state.setIn(['resource', 'data'], data);
     })
   },
   [`FETCH_${resource}_FAILURE`](state, action) {
@@ -64,13 +63,13 @@ export default createReducer(initialState, {
     return state.withMutations((state) => {
       const { id } = action.payload.data;
       const data = state.getIn(['resource', 'data'])
-        .filter((value, key) => value.get('id') !== id);
-      // tips: 说明在 filter 函数中，value 仍然是 Immutable 类型数据;
-      // .filter((value, key) => {
-      //   console.log(value);
-      //   console.log(key);
-      //   return value.get('id') !== id;
-      // })
+        // .filter((value, key) => value.get('id') !== id);
+        // tips: 说明在 filter 函数中，value 仍然是 Immutable 类型数据;
+        .filter((value, key) => {
+          console.log(value);
+          console.log(key);
+          return value.get('id') !== id;
+        })
       state.setIn(['resource', 'data'], data)
         .set('isRequesting', false);
     });

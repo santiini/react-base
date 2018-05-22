@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import {Button, Tabs, Icon} from 'antd';
+import { Button, Tabs, Icon } from 'antd';
 
 const { TabPane } = Tabs;
 /* eslint-disable no-unused-vars */
@@ -23,7 +23,7 @@ export default class Learn2 extends PureComponent {
       static hello() {
         console.log('Hello, world!');
       }
-    } 
+    }
     class ColorPoint extends Point {
       constructor(x, y, color) {
         // 子类必须在constructor方法中调用super方法: 它在这里表示父类的构造函数，用来新建父类的this对象。
@@ -34,7 +34,7 @@ export default class Learn2 extends PureComponent {
           2. 在子类的构造函数中，只有调用super之后，才可以使用this关键字，否则会报错。
         */
         super(x, y); // 调用父类的constructor(x, y)
-        this.color = color;  // 只有调用 super() 改造 this 后，才能使用 this 关键字
+        this.color = color; // 只有调用 super() 改造 this 后，才能使用 this 关键字
       }
 
       toString() {
@@ -75,7 +75,7 @@ export default class Learn2 extends PureComponent {
         // 实例属性
         this.msg = 'A实例属性';
         // 实例方法
-        this.sayMsg = function() {
+        this.sayMsg = function () {
           console.log(this.msg);
         }
       }
@@ -156,7 +156,7 @@ export default class Learn2 extends PureComponent {
         this.x = 1;
       }
     }
-    
+
     class B extends A {
       constructor() {
         super();
@@ -166,7 +166,7 @@ export default class Learn2 extends PureComponent {
         console.log(this.x); // 2
       }
     }
-    
+
     let b = new B();
   }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { Component } from 'react';
 
 import TaskItem from './TaskItem'
@@ -6,7 +7,7 @@ import './demo3.styl';
 export default class Demo3 extends Component {
   goBack = () => {
     console.log(11111)
-    console.log(this.props) 
+    console.log(this.props)
     // 从 react-router 获取的 props;
     this.props.history.push('/')
   }
@@ -30,7 +31,7 @@ export default class Demo3 extends Component {
   }
 
   handleSave = (id, text) => {
-    this.props.actions.editTask({id, name: text})
+    this.props.actions.editTask({ id, name: text })
   }
 
   handleDelete = (id) => {
@@ -38,13 +39,13 @@ export default class Demo3 extends Component {
   }
 
   render() {
-    const { taskList  } = this.props;
+    const { taskList } = this.props;
     // console.log(this.props)
     return (
       <div className="demo3">
         <h4>Demo3: react-redux: mapStateToProps, macActions的统一性使用</h4>
         <div className="input-container">
-          <input ref={node => this.input = node} type="text" onKeyDown={this.handleAdd} />
+          <input ref={(node) => this.input = node} type="text" onKeyDown={this.handleAdd} />
         </div>
         {taskList.map((task) => (
           <TaskItem

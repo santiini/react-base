@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 // import { Form, Input, Select, Checkbox, Radio } from 'antd';
 

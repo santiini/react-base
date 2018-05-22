@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import {Button, Collapse} from 'antd';
+import { Button, Collapse } from 'antd';
 
-const {Panel} = Collapse;
+const { Panel } = Collapse;
 
 /* eslint-disable no-unused-vars,no-new-object */
 export default class Learn1 extends Component {
 
   test1 = () => {
-    const MyClass = function() {};
+    const MyClass = function () { };
     const obj = new MyClass();
 
     console.log(MyClass.prototype);
@@ -15,14 +15,14 @@ export default class Learn1 extends Component {
     console.log(obj.__proto__);
     console.log(obj.__proto__ === MyClass.prototype); // true
     console.log(obj.prototype === MyClass.prototype); // false
-    
+
     MyClass.prototype.a_member = "abc";
     console.log(obj.a_member);
     console.log(obj.__proto__.a_member);
   }
 
   test2 = () => {
-    var MyClass = function() {};
+    var MyClass = function () { };
     var obj1 = new MyClass();
     var obj2 = new MyClass();
     obj1.__proto__.a_member = 'abc';
@@ -36,7 +36,7 @@ export default class Learn1 extends Component {
       this.a = "a";
       this.b = "b";
     };
-    
+
     var obj = new MyClass();
     function f1() {
       alert("something");
@@ -53,23 +53,23 @@ export default class Learn1 extends Component {
   }
 
   test4 = () => {
-    var LaoWang = function() {
+    var LaoWang = function () {
       // 构造函数内部: 实现属性的继承
       this.aproperty = 'aa';
-      this.amethod = function() {
+      this.amethod = function () {
         console.log('b');
         return 'b';
       };
     };
 
     // prototype 上: 方法的继承
-    LaoWang.prototype.bmethod = function() {
+    LaoWang.prototype.bmethod = function () {
       console.log('bbbb');
     };
 
-    var XiaoMing = function() {};
+    var XiaoMing = function () { };
 
-    XiaoMing.prototype = LaoWang.prototype;  // 只是实现的方法的继承
+    XiaoMing.prototype = LaoWang.prototype; // 只是实现的方法的继承
     var obj = new XiaoMing();
 
     console.log(obj instanceof LaoWang); // true
@@ -80,15 +80,15 @@ export default class Learn1 extends Component {
   }
 
   test5 = () => {
-    var LaoWang = function() {
+    var LaoWang = function () {
       this.aproperty = 'aa';
-      this.amethod = function() {
+      this.amethod = function () {
         console.log('b');
         return 'b';
       };
     };
 
-    var XiaoMing = function() {
+    var XiaoMing = function () {
       // this 的指向不对
       // LaoWang(); // Cannot set property 'aproperty' of undefined
 
@@ -106,15 +106,15 @@ export default class Learn1 extends Component {
   }
 
   test6 = () => {
-    var LaoWang = function() {
+    var LaoWang = function () {
       this.aproperty = 'aa';
-      this.amethod = function() {
+      this.amethod = function () {
         console.log('b');
         return 'b';
       };
     };
 
-    var XiaoMing = function() {
+    var XiaoMing = function () {
       LaoWang.call(this);
     };
 
@@ -144,18 +144,18 @@ export default class Learn1 extends Component {
 
   // 原型解耦1: 用两个实体，一个中间类（其实也是一个对象，第一等）和一个中间对象（普通），来解耦
   test7 = () => {
-    var LaoWang = function() {
+    var LaoWang = function () {
       this.aproperty = 'aa';
-      this.amethod = function() {
+      this.amethod = function () {
         console.log('b');
         return 'b';
       };
     };
-    var XiaoMing = function() {
+    var XiaoMing = function () {
       LaoWang.call(this);
     };
 
-    function IntermediateClass() {}
+    function IntermediateClass() { }
     IntermediateClass.prototype = LaoWang.prototype;
     XiaoMing.prototype = new IntermediateClass();
     XiaoMing.prototype.constructor = XiaoMing;
@@ -179,20 +179,20 @@ export default class Learn1 extends Component {
 
   // 原型解耦1: Object.create()
   test8 = () => {
-    var LaoWang = function() {
+    var LaoWang = function () {
       this.aproperty = 'aa';
-      this.amethod = function() {
+      this.amethod = function () {
         console.log('b');
         return 'b';
       };
     };
-    var XiaoMing = function() {
+    var XiaoMing = function () {
       LaoWang.call(this);
     };
 
     // Object.create(pro): 以 pro 为原型创建的对象实例
     XiaoMing.prototype = Object.create(LaoWang.prototype); // prototype 实现方法的继承
-    XiaoMing.prototype.constructor = XiaoMing;  // constructor 构造函数实现了属性的继承
+    XiaoMing.prototype.constructor = XiaoMing; // constructor 构造函数实现了属性的继承
 
     XiaoMing.prototype.another_property = 'cc';
     var subobj = new XiaoMing();
@@ -231,7 +231,7 @@ export default class Learn1 extends Component {
 
   test9 = () => {
     //
-    const A = function() {};
+    const A = function () { };
     const B = {};
 
     // __prototo__: 隐式原型， 一个对象的隐式原型指向构造该对象的构造函数的原型，这也保证了实例能够访问在构造函数原型中定义的属性和方法。
@@ -253,15 +253,15 @@ export default class Learn1 extends Component {
     // 1. 对象的 prototype 和 __proto__
     const obj1 = new Object(); // 方法的本质是由构造函数 function Object(){} 产生的;
 
-    const func1 = function() {}
+    const func1 = function () { }
 
     // 对象具有属性__proto__，可称为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型，
     // 这也保证了实例能够访问在构造函数原型中定义的属性和方法。
-    console.log(obj1.__proto__);  // 对象实例的 __proto__ 指向构造函数 Object.prototype
+    console.log(obj1.__proto__); // 对象实例的 __proto__ 指向构造函数 Object.prototype
     console.log(Object.prototype); // 同上
     console.log(Object.__proto__); // Object() 函数的构造函数 Function() 的 Function.prototype
     console.log(Function.prototype) // Function.prototype 是原型对象，是一个对象
-    console.log(Object.prototype.__proto__);  // 对象构造函数的原型对象，它的 __proto__ 是 null
+    console.log(Object.prototype.__proto__); // 对象构造函数的原型对象，它的 __proto__ 是 null
     console.log(Function.prototype.__proto__); // 函数构造函数的原型对象，它的 __proto__ 是对象构造函数的 prototype
     console.log(obj1.__proto__); // Object.prototype
     console.log(func1.__proto__); // 构造函数 Function() 的 prototype
@@ -272,7 +272,7 @@ export default class Learn1 extends Component {
   test11 = () => {
     function Foo() {
       this.name = 'foo'
-      this.sayHi = function(){
+      this.sayHi = function () {
         console.log('hi');
       }
     }
@@ -292,7 +292,7 @@ export default class Learn1 extends Component {
     // 构造函数的原型属性Foo.prototype指向了原型对象，在原型对象里有共有的方法，所有构造函数声明的实例（这里是f1，f2）都可以共享这个方法。
     console.log(Foo.prototype); // 构造函数 Foo 的原型对象
     console.log(Foo.__proto__); // Foo 函数的本质是: 构造函数function Function()的实例, 这里是: Function.prototype
-    console.log(Function.prototype);  // 同上
+    console.log(Function.prototype); // 同上
     console.log(Function.prototype.__proto__); // Function() 构造函数的原型对象的 __proto__ 是 Object.prototype
     console.log(Foo.prototype.__proto__); // 同上
 
@@ -339,7 +339,7 @@ export default class Learn1 extends Component {
 
     var obj = {
       big: '松卫老师',
-      showBig: function() {
+      showBig: function () {
         console.log(this)
         console.log(this.big)
         console.log(this.big())
@@ -366,13 +366,13 @@ export default class Learn1 extends Component {
   }
 
   test15 = () => {
-    var a = function(){
+    var a = function () {
       console.log(this);
       // console.log(this.name);
     };
-    var b = function(fn) {
+    var b = function (fn) {
       // fn(); // this 指向 window
-      arguments[0]();  // this 指向arguments
+      arguments[0](); // this 指向arguments
     }
 
     b(a);

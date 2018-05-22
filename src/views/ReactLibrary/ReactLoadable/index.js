@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Loadable from 'react-loadable';
+// import Loadable from 'react-loadable';
 import { Button } from 'antd';
 
-import Loading from './Loading';
+// import Loading from './Loading';
 
 // 1.  正常引入组件，不会按需加载;
 import Comp1 from './Comp1';

@@ -18,19 +18,19 @@ const navMenus = topMenus.map((menu) => (
 class Navbar extends Component {
   render() {
     return (
-      <Header style={{backgroundColor: '#fff', padding: 0, display: 'flex'}}>
-      <div className="nav-logo">
-        <div className="nav-logo-content"></div>
-      </div>
-      <Menu
-        defaultSelectedKeys={['nav1']}
-        theme="dark"
-        mode="horizontal"
-        style={{lineHeight: '64px', flex: 1}}
-      >
-        {navMenus}
-      </Menu>
-    </Header>
+      <Header style={{ backgroundColor: '#fff', padding: 0, display: 'flex' }}>
+        <div className="nav-logo">
+          <div className="nav-logo-content">11</div>
+        </div>
+        <Menu
+          defaultSelectedKeys={['nav1']}
+          theme="dark"
+          mode="horizontal"
+          style={{ lineHeight: '64px', flex: 1 }}
+        >
+          {navMenus}
+        </Menu>
+      </Header>
     )
   }
 }

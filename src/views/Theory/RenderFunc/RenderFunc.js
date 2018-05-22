@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 import { Button } from 'antd';
 
 import Post from './Post';
-import { PreviousMap } from 'postcss';
+// import { PreviousMap } from 'postcss';
 
 class RenderFunc extends PureComponent {
-  
+
   static propTypes = {
     posts: PropTypes.array.isRequired,
   }

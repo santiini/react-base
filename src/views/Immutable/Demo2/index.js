@@ -3,7 +3,7 @@
  */
 import React, { PureComponent } from 'react';
 import { Card, Button } from 'antd';
-import Immutable, { List } from 'immutable';
+import Immutable from 'immutable';
 
 class Demo2 extends PureComponent {
   state = {

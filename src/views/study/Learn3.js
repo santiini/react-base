@@ -37,38 +37,38 @@ export default class Learn3 extends Component {
           <TabPane tab="BFC-块级格式化上下文" key="1">
             <h5>1. 同一个 BFC 下外边距会发生折叠</h5>
             <div className="bfc-container">
-              <div className="bfc-child"></div>
-              <div className="bfc-child"></div>
+              <div className="bfc-child" />
+              <div className="bfc-child" />
             </div>
             <h5>2. 不同的 BFC 容器中。</h5>
             <div className="bfc-box">
-              <p></p>
+              <p>1</p>
             </div>
             <div className="bfc-box">
-              <p></p>
+              <p>2</p>
             </div>
             <h5>3. BFC 可以包含浮动的元素（没有包裹浮动)</h5>
             <div>
               <div>11111</div>
-              <div className="bfc-float"></div>
+              <div className="bfc-float" />
             </div>
             <h5>3.2 BFC 可以包含浮动的元素（父元素清除浮动)</h5>
             <div className="bfc-box">
-                <div>11111</div>
-                <div className="bfc-float"></div>
-              </div>
+              <div>11111</div>
+              <div className="bfc-float" />
+            </div>
             <h5>4. BFC 可以阻止元素被浮动元素覆盖</h5>
             <div>
               <div>
-                <div className="bfc-float"></div>
-                <div className="bfc-text"></div>
+                <div className="bfc-float" />
+                <div className="bfc-text" />
               </div>
             </div>
             <h5>4.2. BFC 可以阻止元素被浮动元素覆盖</h5>
             <div>
               <div>
-                <div className="bfc-float"></div>
-                <div className="bfc-text hidden"></div>
+                <div className="bfc-float" />
+                <div className="bfc-text hidden" />
               </div>
             </div>
           </TabPane>
