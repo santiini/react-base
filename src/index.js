@@ -19,7 +19,10 @@ if (process.env.NODE_ENV !== 'production') {
   // whyDidYouUpdate(React);
   whyDidYouUpdate(React, {
     // include: ,
-    exclude: [/^SubMenu/, /^ProxyComponent/],
+    exclude: [
+      /^SubMenu/, /^ProxyComponent/, /^MenuItem/, /^Tooltip/, /^Menu/, /^SiderBar/, /^Breadcrumb/, /^Breadlist/,
+      /^Route/, /^Switch/, /^Basic/, /^Adapter/, /^Basic/, /^Adapter/, /^BasicLayout/, /^LoadableComponent/
+    ],
   });
 }
 
