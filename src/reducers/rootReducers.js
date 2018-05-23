@@ -8,12 +8,16 @@ import commonReducers from './commonState';
 // immutable
 import PostReducers from './Immutable/Post';
 
+// reselect
+import shoppingReducers from './Reselect/shoppingCar';
+
 const rootReducers = combineReducers({
   routing: routerReducer,
   todos: todoReducers,
   users: userReducers,
   common: commonReducers,
   posts: PostReducers,
+  shopping: shoppingReducers,
 });
 
 export const router = routerReducer;

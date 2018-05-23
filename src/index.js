@@ -21,7 +21,8 @@ if (process.env.NODE_ENV !== 'production') {
     // include: ,
     exclude: [
       /^SubMenu/, /^ProxyComponent/, /^MenuItem/, /^Tooltip/, /^Menu/, /^SiderBar/, /^Breadcrumb/, /^Breadlist/,
-      /^Route/, /^Switch/, /^Basic/, /^Adapter/, /^Basic/, /^Adapter/, /^BasicLayout/, /^LoadableComponent/
+      /^Route/, /^Switch/, /^Basic/, /^Adapter/, /^Basic/, /^Adapter/, /^BasicLayout/, /^LoadableComponent/,
+      /^Button/,
     ],
   });
 }
