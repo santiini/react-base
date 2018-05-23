@@ -61,6 +61,7 @@ const AntdDemo2 = getAsyncCom('Antd/Demo2');
 const AntdDemo3 = getAsyncCom('Antd/Demo3');
 const AntdDemo4 = getAsyncCom('Antd/Demo4');
 const AntdDemo5 = getAsyncCom('Antd/Demo5');
+const SliderDemo = getAsyncCom('Antd/Slider');
 
 // kol
 const KolCom = getAsyncCom('kol/index');
@@ -92,6 +93,9 @@ const RenderComponent = getAsyncCom('Theory/RenderFunc');
 const ImmutableDemo1 = getAsyncCom('Immutable/Demo1');
 const ImmutableDemo2 = getAsyncCom('Immutable/Demo2');
 
+// reselect
+const ReselectDemo1 = getAsyncCom('Reselect/Demo1');
+
 // 处理左侧菜单栏的函数
 const getPath = (arr) => arr.reduce((prev, cur) => {
   if (cur.path) {
@@ -112,161 +116,52 @@ export const sideMenus = [
     name: 'demos',
     title: 'demos',
     children: [
-      {
-        path: '/demo1',
-        name: 'demo1',
-        title: 'demo1',
-        component: Demo1Component,
-      },
-      {
-        path: '/demo2',
-        name: 'demo2',
-        title: 'demo2',
-        component: Demo2Component,
-      },
-      {
-        path: '/demo3',
-        name: 'demo3',
-        title: 'demo3',
-        component: Demo3Component,
-      },
-      {
-        path: '/demo4',
-        name: 'demo4',
-        title: 'demo4',
-        component: Demo4Component,
-      },
-      {
-        path: '/demo5',
-        name: 'demo5',
-        title: 'demo5',
-        component: Demo5Component,
-      },
-    ]
+      { path: '/demo1', name: 'demo1', title: 'demo1', component: Demo1Component },
+      { path: '/demo2', name: 'demo2', title: 'demo2', component: Demo2Component },
+      { path: '/demo3', name: 'demo3', title: 'demo3', component: Demo3Component },
+      { path: '/demo4', name: 'demo4', title: 'demo4', component: Demo4Component },
+      { path: '/demo5', name: 'demo5', title: 'demo5', component: Demo5Component },
+    ],
   },
   {
     name: 'ensure',
     title: '按需加载',
     children: [
-      {
-        path: '/resolve1',
-        name: 'resolve1',
-        title: 'resolve1',
-        component: Resolve1,
-      },
-      {
-        path: '/resolve2',
-        name: 'resolve2',
-        title: 'resolve2',
-        component: Resolve2,
-      },
-      {
-        path: '/resolve3',
-        name: 'resolve3',
-        title: 'resolve3',
-        component: Resolve3,
-      },
-      {
-        path: '/resolve4',
-        name: 'resolve4',
-        title: 'resolve4',
-        component: Resolve4,
-      },
-      {
-        path: '/resolve5',
-        name: 'resolve5',
-        title: 'resolve5',
-        component: Resolve5,
-      },
-    ]
+      { path: '/resolve1', name: 'resolve1', title: 'resolve1', component: Resolve1 },
+      { path: '/resolve2', name: 'resolve2', title: 'resolve2', component: Resolve2 },
+      { path: '/resolve3', name: 'resolve3', title: 'resolve3', component: Resolve3 },
+      { path: '/resolve4', name: 'resolve4', title: 'resolve4', component: Resolve4 },
+      { path: '/resolve5', name: 'resolve5', title: 'resolve5', component: Resolve5 },
+    ],
   },
   {
     name: 'study',
     title: '面试题学习',
     children: [
-      {
-        path: '/learn1',
-        name: 'learn1',
-        title: 'prototype',
-        component: Learn1,
-      },
-      {
-        path: '/learn2',
-        name: 'learn2',
-        title: 'es6的Class继承',
-        component: Learn2,
-      },
-      {
-        path: '/learn3',
-        name: 'learn3',
-        title: 'CSS',
-        component: Learn3,
-      },
-      {
-        path: '/learn4',
-        name: 'learn4',
-        title: 'JS',
-        component: Learn4,
-      },
+      { path: '/learn1', name: 'learn1', title: 'prototype', component: Learn1 },
+      { path: '/learn2', name: 'learn2', title: 'es6的Class继承', component: Learn2 },
+      { path: '/learn3', name: 'learn3', title: 'CSS', component: Learn3 },
+      { path: '/learn4', name: 'learn4', title: 'JS', component: Learn4 },
     ],
   },
   {
     name: 'redux',
     title: 'react-redux',
     children: [
-      {
-        path: '/redux1',
-        name: 'redux1',
-        title: 'redux1',
-        component: ReduxDemo1,
-      },
-      {
-        path: '/redux2',
-        name: 'redux2',
-        title: 'redux2',
-        component: ReduxDemo2,
-      },
-      {
-        path: '/redux3',
-        name: 'redux3',
-        title: 'redux3',
-        component: ReduxDemo3,
-      },
-      {
-        path: '/redux4',
-        name: 'redux4',
-        title: 'redux4',
-        component: ReduxDemo4,
-      },
-      {
-        path: '/redux5',
-        name: 'redux5',
-        title: 'redux5',
-        component: ReduxDemo5,
-      },
+      { path: '/redux1', name: 'redux1', title: 'redux1', component: ReduxDemo1 },
+      { path: '/redux2', name: 'redux2', title: 'redux2', component: ReduxDemo2 },
+      { path: '/redux3', name: 'redux3', title: 'redux3', component: ReduxDemo3 },
+      { path: '/redux4', name: 'redux4', title: 'redux4', component: ReduxDemo4 },
+      { path: '/redux5', name: 'redux5', title: 'redux5', component: ReduxDemo5 },
     ],
-  }, {
+  },
+  {
     name: 'router',
     title: 'react-router',
     children: [
-      {
-        path: '/router1',
-        name: 'router1',
-        title: 'router1',
-        component: RouteDemo1,
-      },
-      {
-        path: '/router2',
-        name: 'router2',
-        title: 'router2',
-        component: RouteDemo2,
-      },
-      {
-        path: '/router3',
-        name: 'router3',
-        title: 'router3',
-        component: RouteDemo3,
-      },
+      { path: '/router1', name: 'router1', title: 'router1', component: RouteDemo1 },
+      { path: '/router2', name: 'router2', title: 'router2', component: RouteDemo2 },
+      { path: '/router3', name: 'router3', title: 'router3', component: RouteDemo3 },
     ],
   },
   {
@@ -286,6 +181,7 @@ export const sideMenus = [
       { path: '/antd3', name: 'antd3', title: 'hoc3', component: AntdDemo3 },
       { path: '/antd4', name: 'antd4', title: 'hoc4', component: AntdDemo4 },
       { path: '/antd5', name: 'antd5', title: 'react学习', component: AntdDemo5 },
+      { path: '/slider', name: 'slider', title: 'slider测试', component: SliderDemo },
     ],
   },
   {
@@ -362,7 +258,14 @@ export const sideMenus = [
       { path: '/immutable/demo1', name: 'immutable-demo1', title: 'immutable-demo1', component: ImmutableDemo1 },
       { path: '/immutable/demo2', name: 'immutable-demo2', title: 'immutable-demo2', component: ImmutableDemo2 },
     ]
-  }
+  },
+  {
+    name: 'reselect',
+    title: 'reselect',
+    children: [
+      { path: '/reselect/demo1', name: 'reslect-demo1', title: 'relsect-demo1', component: ReselectDemo1 },
+    ],
+  },
 ];
 
 export const topMenus = [
