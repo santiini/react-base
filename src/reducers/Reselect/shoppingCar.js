@@ -9,12 +9,14 @@ export const DELETE_ONE = 'DELETE_ONE';
 export const FINISH_ONE = 'FINISH_ONE';
 export const CHANGE_FILTER = 'CHANGE_FILTER';
 
-// filterTypes
-export const filterTypes = () => ({
+const types = {
   all: 'SHOW_ALL',
   active: 'SHOW_ACIVE',
   completed: 'SHOW_COMPLETED',
-});
+};
+
+// filterTypes
+export const filterTypes = () => (types);
 
 const initialState = {
   items: [
@@ -24,7 +26,7 @@ const initialState = {
     { value: 44, id: 4, name: '任务4', isCompleted: false },
   ],
   taxPercent: 8,
-  filterType: 'all',
+  filterType: types.all,
 };
 
 const shopping = (state = initialState, action) => {

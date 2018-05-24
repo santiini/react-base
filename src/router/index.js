@@ -74,6 +74,7 @@ const LookComponent = getAsyncCom('Look/ReceiveProps');
 
 // lodash
 const LodashMap = getAsyncCom('Lodash/Map');
+const LodashChain = getAsyncCom('Lodash/Chain');
 
 // 功能
 const CopyComponent = getAsyncCom('try/Copy');
@@ -95,6 +96,7 @@ const ImmutableDemo2 = getAsyncCom('Immutable/Demo2');
 
 // reselect
 const ReselectDemo1 = getAsyncCom('Reselect/Demo1');
+const ReselectDemo2 = getAsyncCom('Reselect/Demo2');
 
 // 处理左侧菜单栏的函数
 const getPath = (arr) => arr.reduce((prev, cur) => {
@@ -218,7 +220,8 @@ export const sideMenus = [
     name: 'lodash',
     title: 'lodash',
     children: [
-      { path: '/lodash/map', name: 'map', title: 'lodash-map', component: LodashMap }
+      { path: '/lodash/map', name: 'map', title: 'lodash-map', component: LodashMap },
+      { path: '/lodash/chain', name: 'chain', title: 'lodash-chain', component: LodashChain },
     ],
   },
   {
@@ -264,6 +267,7 @@ export const sideMenus = [
     title: 'reselect',
     children: [
       { path: '/reselect/demo1', name: 'reslect-demo1', title: 'relsect-demo1', component: ReselectDemo1 },
+      { path: '/reselect/demo2', name: 'reslect-demo2', title: 'relsect-demo2', component: ReselectDemo2 },
     ],
   },
 ];

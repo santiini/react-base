@@ -38,7 +38,8 @@ class ShoppingCar extends PureComponent {
   }
 
   render() {
-    console.log('shopping car 渲染')
+    // tips: reselct 判断 this.props 没有变化， 不会一直渲染;
+    console.log('reselect demo1 rendered')
     console.log(this.props);
     // const { items, taxPercent } = this.props.shop;
     const taxPercent = '错误';
@@ -78,10 +79,10 @@ class ShoppingCar extends PureComponent {
   }
 }
 
-// const mapStateToProps = (state) => ({
-//   shop: state.shopping,
-// });
 
+// reselect 的使用
+// 1. 基础数据存在 redux 中
+// 2. 计算性质的衍生数据由 state 和 Reselect 获取，为纯函数;
 const mapStateToProps = (state, props) => ({
   todos: getFilterTodos(state, props),
 })

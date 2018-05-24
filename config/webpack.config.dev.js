@@ -117,7 +117,7 @@ module.exports = {
             options: {
               formatter: eslintFormatter,
               eslintPath: require.resolve('eslint'),
-              
+
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -257,23 +257,27 @@ module.exports = {
       options: {
         // stylus 的解析规则；
         // 1. 使用 poststylus 插件结合使用 stylus 和 autoprefixer  
-          stylus: {
-            use: [
-              poststylus([ 
-                require('postcss-flexbugs-fixes'),
-                autoprefixer({
-                  browsers: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9', // React doesn't support IE8 anyway
-                  ],
-                  flexbox: 'no-2009',
-                })
-              ])
-            ]
-          }
+        stylus: {
+          use: [
+            poststylus([
+              require('postcss-flexbugs-fixes'),
+              autoprefixer({
+                browsers: [
+                  '>1%',
+                  'last 4 versions',
+                  'Firefox ESR',
+                  'not ie < 9', // React doesn't support IE8 anyway
+                ],
+                flexbox: 'no-2009',
+              })
+            ])
+          ]
         }
+      }
+    }),
+    // webpack ProvidePlugin
+    new webpack.ProvidePlugin({
+      _: 'lodash',
     })
   ],
   // Some libraries import Node modules but don't use them in the browser.

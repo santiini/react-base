@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Card, Button } from 'antd';
-import _ from 'lodash';
 
 export default class extends Component {
 
