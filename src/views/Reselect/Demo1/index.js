@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 import * as shoppingActions from '@/reducers/Reselect/actions';
 import { getFilterTodos } from './todo';
 
+// tips: Component 和 PureComponent 都可以配合 Reselct 避免不必要的 re-render;
+// class ShoppingCar extends React.Component {
 class ShoppingCar extends PureComponent {
   state = {
     title: '测试reselect',
@@ -97,3 +99,8 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCar);
+
+/**
+ * tips: 参考文章:
+ * 1. https://zhuanlan.zhihu.com/p/29415032
+ */

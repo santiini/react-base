@@ -22,6 +22,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   fetchData: postActions.fetch,
   deleteOne: postActions.deletePost,
+  updateOne: postActions.updateOne,
 };
 
 // export default connect(mapStateToProps, mapDispatchToProps)(toJS(Post)); // 这是一种使用方式;

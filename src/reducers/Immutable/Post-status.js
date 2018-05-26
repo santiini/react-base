@@ -21,59 +21,32 @@ const errorPath = 'error'; // error path
 const dataPath = ['resource', 'data']; // 数据修改 path
 
 // 请求状态执行操作
-const requestStatus = (postState, action, cb) => {
-  const { data } = action.payload || {}
-  return postState.withMutations((state) => {
-    state.set(requestPath, true)
-      .set(successPath, false)
-      .set(errorPath, undefined);
-    if (cb) {
-      cb(data);
-    }
-  });
-};
-const successStatus = (postState, action, cb) => {
-  const { data } = action.payload || {}
-  return postState.withMutations((state) => {
-    state.set(requestPath, false)
-      .set(successPath, true)
-      .set(errorPath, undefined);
-    if (cb) {
-      cb(postState, data);
-    }
-  });
-};
-const failureStatus = (postState, action, cb) => {
-  const { data } = action.payload || {}
-  return postState.withMutations((state) => {
-    state.set(requestPath, false)
-      .set(successPath, false)
-      .set(errorPath, undefined);
-    if (cb) {
-      cb(data);
-    }
-  });
+const requestStatus = (state) => {
+  if (!state) {
+    throw new Error('请传入state对象');
+  }
+  state.set(requestPath, true)
+    .set(successPath, false)
+    .set(errorPath, undefined);
 };
 // 成功状态执行操作
-// const successStatus = (postState, action, cb) => postState.withMutations((state) => {
-//   const { data } = action.payload || {};
-//   state.set(requestPath, false)
-//     .set(successPath, true)
-//     .set(errorPath, undefined);
-//   if (cb) {
-//     cb(data);
-//   }
-// });
-// // 失败状态执行操作
-// const failureStatus = (postState, action, cb) => postState.withMutations((state) => {
-//   const { data } = action.payload || {};
-//   state.set(requestPath, false)
-//     .set(successPath, false)
-//     .set(errorPath, data.error);
-//   if (cb) {
-//     cb(data);
-//   }
-// });
+const successStatus = (state) => {
+  if (!state) {
+    throw new Error('请传入state对象');
+  }
+  state.set(requestPath, false)
+    .set(successPath, true)
+    .set(errorPath, undefined);
+};
+// 失败状态执行操作
+const failureStatus = (state, error) => {
+  if (!state) {
+    throw new Error('请传入state对象');
+  }
+  state.set(requestPath, false)
+    .set(successPath, false)
+    .set(errorPath, error);
+};
 
 const initialState = Immutable.fromJS({
   resource: {
@@ -99,27 +72,23 @@ const initialState = Immutable.fromJS({
 export default createReducer(initialState, {
   // 1. 获取列表：
   [requestOpt('fetch')](state, action) {
-    // return state.withMutations(requestStatus);
     // state.widthMutations 可以处理 immutable 操作;
-    return requestStatus(state, action);
+    return state.withMutations(requestStatus);
   },
   [successOpt('fetch')](state, action) {
-    // return state.withMutations((state) => {
-    //   const { data } = action.payload.data;
-    //   successStatus(state);
-    //   // tips: 注意在 Immutable-redux 中，要保证向 redux 中更新、插入数据时，必须使用 Immutable.formJS 转化为 Immutable 类型;
-    //   state.setIn(dataPath, Immutable.fromJS(data));
-    //   // state.setIn(['resource', 'data'], data);
-    // })
-    const newState = successStatus(state, action, (postState, data) => {
-      const postList = data.data;
-      postState.setIn(dataPath, Immutable.fromJS(postList));
-    });
-    console.log(newState);
-    return newState;
+    return state.withMutations((state) => {
+      const { data } = action.payload.data;
+      successStatus(state);
+      // tips: 注意在 Immutable-redux 中，要保证向 redux 中更新、插入数据时，必须使用 Immutable.formJS 转化为 Immutable 类型;
+      state.setIn(dataPath, Immutable.fromJS(data));
+      // state.setIn(['resource', 'data'], data);
+    })
   },
   [failureOpt('fetch')](state, action) {
-    return failureStatus(state, action);
+    return state.withMutations((state) => {
+      const error = action.payload.error;
+      failureStatus(error);
+    })
   },
   // 2. 删除
   [requestOpt('delete')](state, action) {

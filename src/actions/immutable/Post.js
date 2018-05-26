@@ -43,3 +43,15 @@ export const deletePost = (id) => async (dispatch, getStae) => {
     console.log(err);
   }
 }
+
+// 更新 id 内容
+export const updateOne = (id, post) => async (dispatch, getState) => {
+  dispatch(Request(resource, 'update'));
+  try {
+    await sleep(3000);
+    dispatch(Success({ id, post }, resource, 'update'));
+  } catch (err) {
+    console.log(err);
+    dispatch(Failure({ error: err }, resource, 'update'));
+  }
+}
