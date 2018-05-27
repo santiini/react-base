@@ -10,7 +10,8 @@ import App from './App'; // 正常的 admin 列表
 // import App from './router/RouterMap'; // react-loadable 的测试
 // import store from './state/state';
 // import store from './redux/store'
-import configStore from './reducers/configStore';
+import configStore from './reducers/configStore'; // immutable-reselect
+// import configStore from './reducers/store/configStore'; // immutable-reselect
 
 import registerServiceWorker from './registerServiceWorker';
 

@@ -55,6 +55,7 @@ class ChainCom extends PureComponent {
       <div className="chain-demo">
         <Card title="chain链式操作">
           <Table
+            rowKey="name"
             dataSource={this.state.list}
             columns={columns}
           />

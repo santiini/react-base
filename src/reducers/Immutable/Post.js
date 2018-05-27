@@ -22,58 +22,45 @@ const dataPath = ['resource', 'data']; // 数据修改 path
 
 // 请求状态执行操作
 const requestStatus = (postState, action, cb) => {
-  const { data } = action.payload || {}
-  return postState.withMutations((state) => {
+  const { data } = action.payload || {};
+  // state.widthMutations 可以处理 immutable 操作;
+  const newState = postState.withMutations((state) => {
     state.set(requestPath, true)
       .set(successPath, false)
       .set(errorPath, undefined);
-    if (cb) {
-      cb(data);
-    }
   });
+  if (cb) {
+    return cb(newState, data);
+  }
+  return newState;
 };
+// 成功状态执行操作
 const successStatus = (postState, action, cb) => {
   const { data } = action.payload || {}
-  return postState.withMutations((state) => {
+  const newState = postState.withMutations((state) => {
     state.set(requestPath, false)
       .set(successPath, true)
       .set(errorPath, undefined);
-    if (cb) {
-      cb(postState, data);
-    }
   });
+  if (cb) {
+    return cb(newState, data);
+  }
+  // 最终返回新的 state;
+  return newState;
 };
+// 失败状态执行操作
 const failureStatus = (postState, action, cb) => {
   const { data } = action.payload || {}
-  return postState.withMutations((state) => {
+  const newState = postState.withMutations((state) => {
     state.set(requestPath, false)
       .set(successPath, false)
       .set(errorPath, undefined);
-    if (cb) {
-      cb(data);
-    }
   });
+  if (cb) {
+    return cb(newState, data);
+  }
+  return newState;
 };
-// 成功状态执行操作
-// const successStatus = (postState, action, cb) => postState.withMutations((state) => {
-//   const { data } = action.payload || {};
-//   state.set(requestPath, false)
-//     .set(successPath, true)
-//     .set(errorPath, undefined);
-//   if (cb) {
-//     cb(data);
-//   }
-// });
-// // 失败状态执行操作
-// const failureStatus = (postState, action, cb) => postState.withMutations((state) => {
-//   const { data } = action.payload || {};
-//   state.set(requestPath, false)
-//     .set(successPath, false)
-//     .set(errorPath, data.error);
-//   if (cb) {
-//     cb(data);
-//   }
-// });
 
 const initialState = Immutable.fromJS({
   resource: {
@@ -99,21 +86,13 @@ const initialState = Immutable.fromJS({
 export default createReducer(initialState, {
   // 1. 获取列表：
   [requestOpt('fetch')](state, action) {
-    // return state.withMutations(requestStatus);
-    // state.widthMutations 可以处理 immutable 操作;
     return requestStatus(state, action);
   },
   [successOpt('fetch')](state, action) {
-    // return state.withMutations((state) => {
-    //   const { data } = action.payload.data;
-    //   successStatus(state);
-    //   // tips: 注意在 Immutable-redux 中，要保证向 redux 中更新、插入数据时，必须使用 Immutable.formJS 转化为 Immutable 类型;
-    //   state.setIn(dataPath, Immutable.fromJS(data));
-    //   // state.setIn(['resource', 'data'], data);
-    // })
     const newState = successStatus(state, action, (postState, data) => {
+      // tips: 注意在 Immutable-redux 中，要保证向 redux 中更新、插入数据时，必须使用 Immutable.formJS 转化为 Immutable 类型;
       const postList = data.data;
-      postState.setIn(dataPath, Immutable.fromJS(postList));
+      return postState.setIn(dataPath, Immutable.fromJS(postList));
     });
     console.log(newState);
     return newState;
@@ -123,36 +102,37 @@ export default createReducer(initialState, {
   },
   // 2. 删除
   [requestOpt('delete')](state, action) {
-    return state.withMutations((state) => {
-      state.set(requestPath, true);
-    });
+    return requestStatus(state, action);
   },
   [successOpt('delete')](state, action) {
-    return state.withMutations((state) => {
-      const { id } = action.payload.data;
-      const data = state.getIn(dataPath)
-        // .filter((value, key) => value.get('id') !== id);
-        // tips: 说明在 filter 函数中，value 仍然是 Immutable 类型数据;
-        .filter((value, key) => {
-          console.log(value);
-          console.log(key);
-          return value.get('id') !== id;
-        })
-      state.setIn(dataPath, data)
-        .set(requestPath, false);
+    // return state.withMutations((state) => {
+    //   const { id } = action.payload.data;
+    //   const data = state.getIn(dataPath)
+    //     // .filter((value, key) => value.get('id') !== id);
+    //     // tips: 说明在 filter 函数中，value 仍然是 Immutable 类型数据;
+    //     .filter((value, key) => {
+    //       console.log(value);
+    //       console.log(key);
+    //       return value.get('id') !== id;
+    //     })
+    //   state.setIn(dataPath, data)
+    //     .set(requestPath, false);
+    // });
+    return successStatus(state, action, (postState, data) => {
+      const { id } = data;
+      // tips: 说明在 filter 函数中，value 仍然是 Immutable 类型数据;
+      // 因为: 1. Immutable.formJS() 是所有层级都是 Immutable 数据;
+      //      2. Map(), List() 则只有第一级是 Immutable 数据;
+      const newData = postState.getIn(dataPath).filter((value) => value.get('id') !== id);
+      return postState.setIn(dataPath, newData);
     });
   },
-  [successOpt('delete')](state, action) {
-    return state.withMutations((state) => {
-      const { error } = action.payload;
-      state.set(requestPath, false)
-        .set('isFailure', true)
-        .set(errorPath, error);
-    })
+  [failureOpt('delete')](state, action) {
+    return failureStatus(state, action);
   },
   // 3. update
   [requestOpt('update')](state, action) {
-    return state.set(requestPath, true);
+    return requestStatus(state, action);
   },
   [successOpt('update')](state, action) {
     return state.withMutations((state) => {
@@ -166,19 +146,17 @@ export default createReducer(initialState, {
     });
   },
   [failureOpt('update')](state, action) {
-    const { error } = action.payload;
-    return state.set(requestPath, false)
-      .set(errorPath, error);
+    return failureStatus(state, action);
   },
   // 4. add
   [requestOpt('add')](state, action) {
-    return state.set('isRe')
+    return requestStatus(state, action);
   },
   [successOpt('add')](state, action) {
 
   },
   [failureOpt('add')](state, action) {
-
+    
   },
   // 5. find
 });

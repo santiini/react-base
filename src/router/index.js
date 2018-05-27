@@ -61,7 +61,8 @@ const AntdDemo2 = getAsyncCom('Antd/Demo2');
 const AntdDemo3 = getAsyncCom('Antd/Demo3');
 const AntdDemo4 = getAsyncCom('Antd/Demo4');
 const AntdDemo5 = getAsyncCom('Antd/Demo5');
-const SliderDemo = getAsyncCom('Antd/Slider');
+const SliderDemo = getAsyncCom('Antd/Slider/index');
+const TableDemo = getAsyncCom('Antd/Table');
 
 // kol
 const KolCom = getAsyncCom('kol/index');
@@ -93,6 +94,8 @@ const RenderComponent = getAsyncCom('Theory/RenderFunc');
 // immutable
 const ImmutableDemo1 = getAsyncCom('Immutable/Demo1');
 const ImmutableDemo2 = getAsyncCom('Immutable/Demo2');
+const ImmutableDemo3 = getAsyncCom('Immutable/Demo3');
+const ImmutableReselct = getAsyncCom('Immutable/reselect/selector');
 
 // reselect
 const ReselectDemo1 = getAsyncCom('Reselect/Demo1');
@@ -184,6 +187,7 @@ export const sideMenus = [
       { path: '/antd4', name: 'antd4', title: 'hoc4', component: AntdDemo4 },
       { path: '/antd5', name: 'antd5', title: 'react学习', component: AntdDemo5 },
       { path: '/slider', name: 'slider', title: 'slider测试', component: SliderDemo },
+      { path: '/table', name: 'table', title: 'table基础', component: TableDemo },
     ],
   },
   {
@@ -260,6 +264,8 @@ export const sideMenus = [
     children: [
       { path: '/immutable/demo1', name: 'immutable-demo1', title: 'immutable-demo1', component: ImmutableDemo1 },
       { path: '/immutable/demo2', name: 'immutable-demo2', title: 'immutable-demo2', component: ImmutableDemo2 },
+      { path: '/immutable/demo3', name: 'immutable-demo3', title: 'immutable-demo3', component: ImmutableDemo3 },
+      { path: '/immutable/reselect', name: 'immutable-reselect', title: 'immutable-reselect', component: ImmutableReselct },
     ]
   },
   {
