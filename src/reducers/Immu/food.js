@@ -15,15 +15,24 @@ const initialState = Immutable.fromJS({
   // isFailure: false,
   error: undefined,
   list: [
-    { id: 1, name: '食物11', type: 1, followers: 345, price: 12 },
-    { id: 2, name: '食物22', type: 1, followers: 687, price: 435 },
-    { id: 3, name: '食物33', type: 1, followers: 954, price: 24 },
-    { id: 4, name: '水果11', type: 2, followers: 825, price: 546 },
-    { id: 5, name: '水果22', type: 2, followers: 738, price: 678 },
-    { id: 6, name: '水果33', type: 2, followers: 621, price: 345 },
-    { id: 7, name: '主食11', type: 3, followers: 352, price: 88 },
-    { id: 8, name: '主食22', type: 3, followers: 256, price: 98 },
-    { id: 9, name: '主食33', type: 3, followers: 142, price: 34 },
+    { id: 2, name: '食物22', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 99, goods: '货物描述1', type: 1, followers: 687, price: 435 },
+    { id: 3, name: '食物33', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 213, goods: '货物描述2', type: 1, followers: 954, price: 24 },
+    { id: 1, name: '食物11', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 44, goods: '货物描述3', type: 1, followers: 345, price: 12 },
+    { id: 4, name: '水果11', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 21, goods: '货物描述4', type: 2, followers: 825, price: 546 },
+    { id: 5, name: '水果22', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 17, goods: '货物描述5', type: 2, followers: 738, price: 678 },
+    { id: 6, name: '水果33', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 43, goods: '货物描述6', type: 2, followers: 621, price: 345 },
+    { id: 7, name: '主食11', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 64, goods: '货物描述7', type: 3, followers: 352, price: 88 },
+    { id: 8, name: '主食22', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 74, goods: '货物描述8', type: 3, followers: 256, price: 98 },
+    { id: 9, name: '主食33', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 84, goods: '货物描述9', type: 3, followers: 142, price: 34 },
+    { id: 10, name: '食物11', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 12, good: '货物描述11', type: 1, followers: 325, price: 12 },
+    { id: 11, name: '食物22', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 35, good: '货物描述12', type: 1, followers: 657, price: 435 },
+    { id: 12, name: '食物33', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 63, good: '货物描述13', type: 1, followers: 924, price: 24 },
+    { id: 13, name: '水果11', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 85, good: '货物描述14', type: 2, followers: 885, price: 546 },
+    { id: 14, name: '水果22', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 14, good: '货物描述15', type: 2, followers: 708, price: 678 },
+    { id: 15, name: '水果33', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 26, good: '货物描述16', type: 2, followers: 321, price: 345 },
+    { id: 16, name: '主食11', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 37, good: '货物描述17', type: 3, followers: 362, price: 88 },
+    { id: 17, name: '主食22', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 46, good: '货物描述18', type: 3, followers: 656, price: 98 },
+    { id: 18, name: '主食33', discripition: '莫道不消愁，帘卷西风，人比黄花瘦', score: 85, good: '货物描述19', type: 3, followers: 132, price: 34 },
   ],
   total: 10,
 });
@@ -48,7 +57,7 @@ export const successStatus = (shoppingState, action, cb) => {
       .set(successPath, true)
       .set(errorPath, undefined);
   });
-  return !cb ? newState : (cb(newState, data) || newState); 
+  return !cb ? newState : (cb(newState, data) || newState);
 }
 
 // handlers 匹配 action.type, 执行对应的 reducer 函数

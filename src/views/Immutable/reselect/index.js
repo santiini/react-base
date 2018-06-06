@@ -63,7 +63,7 @@ class ImmutableReselect extends PureComponent {
     return (
       <div className="food-demo">
         <Spin spinning={this.props.loading}>
-          <Card title="immutable.js优化">
+          <Card title={this.props.title}>
             <div className="">{`共${this.props.total}条数据`}</div>
             <div className="btn-group">
               <Button onClick={this.fetchFood}>fetch food</Button>

@@ -63,6 +63,7 @@ const AntdDemo4 = getAsyncCom('Antd/Demo4');
 const AntdDemo5 = getAsyncCom('Antd/Demo5');
 const SliderDemo = getAsyncCom('Antd/Slider/index');
 const TableDemo = getAsyncCom('Antd/Table');
+const TableDemo2 = getAsyncCom('Antd/Table/Demo2');
 
 // kol
 const KolCom = getAsyncCom('kol/index');
@@ -95,7 +96,7 @@ const RenderComponent = getAsyncCom('Theory/RenderFunc');
 const ImmutableDemo1 = getAsyncCom('Immutable/Demo1');
 const ImmutableDemo2 = getAsyncCom('Immutable/Demo2');
 const ImmutableDemo3 = getAsyncCom('Immutable/Demo3');
-const ImmutableReselct = getAsyncCom('Immutable/reselect/selector');
+const ImmutableReselct = getAsyncCom('Immutable/reselect/reselect');
 
 // reselect
 const ReselectDemo1 = getAsyncCom('Reselect/Demo1');
@@ -188,6 +189,7 @@ export const sideMenus = [
       { path: '/antd5', name: 'antd5', title: 'react学习', component: AntdDemo5 },
       { path: '/slider', name: 'slider', title: 'slider测试', component: SliderDemo },
       { path: '/table', name: 'table', title: 'table基础', component: TableDemo },
+      { path: '/table2', name: 'table2', title: 'table拓展', component: TableDemo2 },
     ],
   },
   {
